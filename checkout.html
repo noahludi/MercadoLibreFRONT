@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Métodos de Pago</title>
+    <link rel="stylesheet" href="styles/checkout.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="left-section">
+            <div class="logo">
+                <img src="resources/Logo2.png" alt="MercadoNegro">
+            </div>
+            <div class="product-display">
+                <h2 id="product-name"></h2>
+                <div id="product-price"></div>
+                <img id="product-image" src="" alt="Producto" /> <!-- Aquí se muestra la imagen -->
+            </div>
+            <form class="form">
+                <label>Elige tu método de pago:</label>
+                <div class="payment-methods" id="payment-methods">
+                    <div class="method" data-method="credit-card">
+                        <div class="radio-indicator"></div>
+                        <img src="resources/credit-card.png" alt="Credit Card">
+                        <span>Tarjeta de Crédito</span>
+                    </div>
+                    <div class="method" data-method="qr">
+                        <div class="radio-indicator"></div>
+                        <img src="resources/qr.jpg" alt="QR Pay">
+                        <span>Pago QR</span>
+                    </div>
+                </div>
+                <button type="submit">Continuar</button>
+            </form>
+        </div>
+        <div class="right-section">
+            <h3>Estás pagando: <span id="right-product-price"></span></h3>
+            <div id="qr-container"></div>
+            <p>Tiempo restante: <span id="timer">30:00</span></p>
+        </div>
+    </div>
+    
+    <script src="scripts/checkout.js"></script>
+</body>
+</html>

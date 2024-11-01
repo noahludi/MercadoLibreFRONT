@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" />
+    <link rel="stylesheet" href="styles/styles.css">
+    <title>ML - Mercado Libre</title>
+    <script src="scripts/script.js"></script>
+</head>
+<body>
+
+    <!-- Barra de navegación -->
+    <header>
+        <div class="logo">
+            <img src="resources/logo.png" alt="Logo">
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Buscar productos, marcas y más...">
+            <button><img src="resources/search.png" class="search-icon" alt="Buscar"/></button> <!-- Icono de búsqueda -->
+        </div>
+        <div class="nav-links">
+            <a href="#"><span class="material-symbols-outlined">home</span></a>
+            <a href="#"><span class="material-symbols-outlined">shopping_bag</span></a>
+            <a href="#"><span class="material-symbols-outlined">shopping_cart</span></a>
+            <div class="dropdown">
+                <a href="#" id="accountIcon"><span class="material-symbols-outlined">account_circle</span></a>
+                <div class="dropdown-content">
+                    <p>Bienvenido, Invitado</p>
+                    <a href="login.html">Ingresar</a>
+                </div>
+            </div>
+        </div>
+    </header>    
+
+    <!-- Carrusel de Publicidad -->
+    <section class="carousel-ad">
+        <div class="carousel-container-ad">
+            <button class="carousel-prev-ad">&#10094;</button>
+            <div class="ad-images">
+                <img src="resources/ad1.png" alt="Publicidad 1">
+                <img src="resources/ad2.png" alt="Publicidad 2">
+                <img src="resources/ad3.png" alt="Publicidad 3">
+            </div>
+            <button class="carousel-next-ad">&#10095;</button>
+        </div>
+    </section>
+    
+
+    
+
+    <!-- Categorías -->
+    <section class="categories">
+        <h2>Categorías</h2>
+        <div class="category-list">
+            <a href="#electronica">Electrónica</a>
+            <a href="#">Moda</a>
+            <a href="#">Hogar</a>
+            <a href="#">Deportes</a>
+            <a href="#">Automotriz</a>
+            <a href="#">Más categorías</a>
+        </div>
+    </section>
+
+    <!-- Carrusel de Productos Destacados -->
+    <section class="featured-products">
+        <h2>Productos Destacados</h2>
+        <div class="carousel-container">
+            <button class="carousel-prev">&#10094;</button> <!-- Botón previo -->
+            <div class="product-list">
+                <!-- Producto 1 -->
+                <div class="product">
+                    <img src="resources/24ULTRA.jpg" alt="Producto 1">
+                    <p>Producto 1</p>
+                    <span>$10,000</span>
+                    <a href="#"><img src="resources/addToCart.png" alt="Comprar"></a>
+                </div>
+                <!-- Producto 2 -->
+                <div class="product">
+                    <img src="resources/24ULTRA.jpg" alt="Producto 2">
+                    <p>Producto 2</p>
+                    <span>$15,000</span>
+                    <a href="#"><img src="resources/addToCart.png" alt="Comprar"></a>
+                </div>
+                <!-- Producto 3 -->
+                <div class="product">
+                    <img src="resources/24ULTRA.jpg" alt="Producto 3">
+                    <p>Producto 3</p>
+                    <span>$20,000</span>
+                    <a href="#"><img src="resources/addToCart.png" alt="Comprar"></a>
+                </div>
+                <!-- Producto 4 -->
+                <div class="product">
+                    <img src="resources/24ULTRA.jpg" alt="Producto 4">
+                    <p>Producto 4</p>
+                    <span>$25,000</span>
+                    <a href="#"><img src="resources/addToCart.png" alt="Comprar"></a>
+                </div>
+                <!-- Producto 5 -->
+                <div class="product">
+                    <img src="resources/24ULTRA.jpg" alt="Producto 5">
+                    <p>Producto 5</p>
+                    <span>$30,000</span>
+                    <a href="#"><img src="resources/addToCart.png" alt="Comprar"></a>
+                </div>
+                <!-- Producto 6 -->
+                <div class="product">
+                    <img src="resources/24ULTRA.jpg" alt="Producto 6">
+                    <p>Producto 6</p>
+                    <span>$35,000</span>
+                    <a href="#"><img src="resources/addToCart.png" alt="Comprar"></a>
+                </div>
+                
+            </div>
+            <button class="carousel-next">&#10095;</button> <!-- Botón siguiente -->
+        </div>
+    </section>
+
+    <!-- Sección de Electrónica -->
+<section id="electronica" class="electronics">
+    <h2>Electrónica</h2>
+    <div class="electronics-list">
+        <!-- Producto de electrónica 1 -->
+
+        <div class="product" onclick="showProductDetails('Samsung Galaxy S24 Ultra', '256 GB', '12 GB', '6.8 pulgadas', '200 MP', '5000 mAh', 'resources/24ULTRA.jpg', '$2.599.999')">
+            <img src="resources/24ULTRA.jpg" alt="Producto Samsung S24 Ultra">
+            <p>Samsung Galaxy S24 Ultra</p>
+            <span>$2.599.999</span>
+            <a href="#"><img src="resources/addToCart.png" alt="Comprar"></a>
+        </div>
+
+        <!-- Producto de electrónica 2 -->
+        <div class="product" onclick="showProductDetails('Samsung Galaxy S24 Ultra', '256 GB', '12 GB', '6.8 pulgadas', '200 MP', '5000 mAh', 'resources/24ULTRA.jpg', '$2.599.999')">
+            <img src="resources/24ULTRA.jpg" alt="Producto Samsung S24 Ultra">
+            <p>Samsung Galaxy S24 Ultra</p>
+            <span>$2.599.999</span>
+            <a href="#"><img src="resources/addToCart.png" alt="Comprar"></a>
+        </div>
+        <!-- Producto de electrónica 3 -->
+        <div class="product" onclick="showProductDetails('Samsung Galaxy S24 Ultra', '256 GB', '12 GB', '6.8 pulgadas', '200 MP', '5000 mAh', 'resources/24ULTRA.jpg', '$2.599.999')">
+            <img src="resources/24ULTRA.jpg" alt="Producto Samsung S24 Ultra">
+            <p>Samsung Galaxy S24 Ultra</p>
+            <span>$2.599.999</span>
+            <a href="#"><img src="resources/addToCart.png" alt="Comprar"></a>
+        </div>
+        <!-- Producto de electrónica 4 -->
+        <div class="product" onclick="showProductDetails('Samsung Galaxy S24 Ultra', '256 GB', '12 GB', '6.8 pulgadas', '200 MP', '5000 mAh', 'resources/24ULTRA.jpg', '$2.599.999')">
+            <img src="resources/24ULTRA.jpg" alt="Producto Samsung S24 Ultra">
+            <p>Samsung Galaxy S24 Ultra</p>
+            <span>$2.599.999</span>
+            <a href="#"><img src="resources/addToCart.png" alt="Comprar"></a>
+        </div>
+        <!-- Producto de electrónica 5 -->
+        <div class="product" onclick="showProductDetails('Samsung Galaxy S24 Ultra', '256 GB', '12 GB', '6.8 pulgadas', '200 MP', '5000 mAh', 'resources/24ULTRA.jpg', '$2.599.999')">
+            <img src="resources/24ULTRA.jpg" alt="Producto Samsung S24 Ultra">
+            <p>Samsung Galaxy S24 Ultra</p>
+            <span>$2.599.999</span>
+            <a href="#"><img src="resources/addToCart.png" alt="Comprar"></a>
+        </div>
+        <!-- Producto de electrónica 6 -->
+        <div class="product" onclick="showProductDetails('Samsung Galaxy S24 Ultra', '256 GB', '12 GB', '6.8 pulgadas', '200 MP', '5000 mAh', 'resources/24ULTRA.jpg', '$2.599.999')">
+            <img src="resources/24ULTRA.jpg" alt="Producto Samsung S24 Ultra">
+            <p>Samsung Galaxy S24 Ultra</p>
+            <span>$2.599.999</span>
+            <a href="#"><img src="resources/addToCart.png" alt="Comprar"></a>
+        </div>
+        <!-- Producto de electrónica 7 -->
+        <div class="product" onclick="showProductDetails('Samsung Galaxy S24 Ultra', '256 GB', '12 GB', '6.8 pulgadas', '200 MP', '5000 mAh', 'resources/24ULTRA.jpg', '$2.599.999')">
+            <img src="resources/24ULTRA.jpg" alt="Producto Samsung S24 Ultra">
+            <p>Samsung Galaxy S24 Ultra</p>
+            <span>$2.599.999</span>
+            <a href="#"><img src="resources/addToCart.png" alt="Comprar"></a>
+        </div>
+        <!-- Producto de electrónica 8 -->
+        <div class="product" onclick="showProductDetails('Samsung Galaxy S24 Ultra', '256 GB', '12 GB', '6.8 pulgadas', '200 MP', '5000 mAh', 'resources/24ULTRA.jpg', '$2.599.999')">
+            <img src="resources/24ULTRA.jpg" alt="Producto Samsung S24 Ultra">
+            <p>Samsung Galaxy S24 Ultra</p>
+            <span>$2.599.999</span>
+            <a href="#"><img src="resources/addToCart.png" alt="Comprar"></a>
+        </div>
+        <!-- Producto de electrónica 9 -->
+        <div class="product" onclick="showProductDetails('Samsung Galaxy S24 Ultra', '256 GB', '12 GB', '6.8 pulgadas', '200 MP', '5000 mAh', 'resources/24ULTRA.jpg', '$2.599.999')">
+            <img src="resources/24ULTRA.jpg" alt="Producto Samsung S24 Ultra">
+            <p>Samsung Galaxy S24 Ultra</p>
+            <span>$2.599.999</span>
+            <a href="#"><img src="resources/addToCart.png" alt="Comprar"></a>
+        </div>
+        <!-- Producto de electrónica 10 -->
+        <div class="product" onclick="showProductDetails('Samsung Galaxy S24 Ultra', '256 GB', '12 GB', '6.8 pulgadas', '200 MP', '5000 mAh', 'resources/24ULTRA.jpg', '$2.599.999')">
+            <img src="resources/24ULTRA.jpg" alt="Producto Samsung S24 Ultra">
+            <p>Samsung Galaxy S24 Ultra</p>
+            <span>$2.599.999</span>
+            <a href="#"><img src="resources/addToCart.png" alt="Comprar"></a>
+        </div>
+        <!-- Producto de electrónica 11 -->
+        <div class="product" onclick="showProductDetails('Samsung Galaxy S24 Ultra', '256 GB', '12 GB', '6.8 pulgadas', '200 MP', '5000 mAh', 'resources/24ULTRA.jpg', '$2.599.999')">
+            <img src="resources/24ULTRA.jpg" alt="Producto Samsung S24 Ultra">
+            <p>Samsung Galaxy S24 Ultra</p>
+            <span>$2.599.999</span>
+            <a href="#"><img src="resources/addToCart.png" alt="Comprar"></a>
+        </div>
+        <!-- Producto de electrónica 12 -->
+        <div class="product" onclick="showProductDetails('Samsung Galaxy S24 Ultra', '256 GB', '12 GB', '6.8 pulgadas', '200 MP', '5000 mAh', 'resources/24ULTRA.jpg', '$2.599.999')">
+            <img src="resources/24ULTRA.jpg" alt="Producto Samsung S24 Ultra">
+            <p>Samsung Galaxy S24 Ultra</p>
+            <span>$2.599.999</span>
+            <a href="#"><img src="resources/addToCart.png" alt="Comprar"></a>
+        </div>
+    </div>
+</section>
+
+<!-- Sección de Moda -->
+<section id="moda" class="fashion">
+    <h2>Moda</h2>
+    <div class="fashion-list">
+        <!-- Producto de moda 1 -->
+
+        <div class="product" onclick="showProductDetails('Chomba Remera Lacoste Hombre', '256 GB', '12 GB', '6.8 pulgadas', '200 MP', '5000 mAh', 'resources/24ULTRA.jpg', '$2.599.999')">
+            <img src="resources/chombaLacoste.jpg" alt="Chomba Remera Lacoste Hombre">
+            <p>Chomba Remera Lacoste Hombre</p>
+            <span>$79.999   </span>
+            <a href="#"><img src="resources/addToCart.png" alt="Comprar"></a>
+        </div>
+
+        <!-- Producto de moda 2 -->
+        <div class="product" onclick="showProductDetails('Samsung Galaxy S24 Ultra', '256 GB', '12 GB', '6.8 pulgadas', '200 MP', '5000 mAh', 'resources/24ULTRA.jpg', '$2.599.999')">
+            <img src="resources/chombaLacoste.jpg" alt="Producto Samsung S24 Ultra">
+            <p>Samsung Galaxy S24 Ultra</p>
+            <span>$2.599.999</span>
+            <a href="#"><img src="resources/addToCart.png" alt="Comprar"></a>
+        </div>
+        <!-- Producto de electrónica 3 -->
+        <div class="product" onclick="showProductDetails('Samsung Galaxy S24 Ultra', '256 GB', '12 GB', '6.8 pulgadas', '200 MP', '5000 mAh', 'resources/24ULTRA.jpg', '$2.599.999')">
+            <img src="resources/chombaLacoste.jpg" alt="Producto Samsung S24 Ultra">
+            <p>Samsung Galaxy S24 Ultra</p>
+            <span>$2.599.999</span>
+            <a href="#"><img src="resources/addToCart.png" alt="Comprar"></a>
+        </div>
+        <!-- Producto de electrónica 4 -->
+        <div class="product" onclick="showProductDetails('Samsung Galaxy S24 Ultra', '256 GB', '12 GB', '6.8 pulgadas', '200 MP', '5000 mAh', 'resources/24ULTRA.jpg', '$2.599.999')">
+            <img src="resources/chombaLacoste.jpg" alt="Producto Samsung S24 Ultra">
+            <p>Samsung Galaxy S24 Ultra</p>
+            <span>$2.599.999</span>
+            <a href="#"><img src="resources/addToCart.png" alt="Comprar"></a>
+        </div>
+        <!-- Producto de electrónica 5 -->
+        <div class="product" onclick="showProductDetails('Samsung Galaxy S24 Ultra', '256 GB', '12 GB', '6.8 pulgadas', '200 MP', '5000 mAh', 'resources/24ULTRA.jpg', '$2.599.999')">
+            <img src="resources/chombaLacoste.jpg" alt="Producto Samsung S24 Ultra">
+            <p>Samsung Galaxy S24 Ultra</p>
+            <span>$2.599.999</span>
+            <a href="#"><img src="resources/addToCart.png" alt="Comprar"></a>
+        </div>
+        <!-- Producto de electrónica 6 -->
+        <div class="product" onclick="showProductDetails('Samsung Galaxy S24 Ultra', '256 GB', '12 GB', '6.8 pulgadas', '200 MP', '5000 mAh', 'resources/24ULTRA.jpg', '$2.599.999')">
+            <img src="resources/chombaLacoste.jpg" alt="Producto Samsung S24 Ultra">
+            <p>Samsung Galaxy S24 Ultra</p>
+            <span>$2.599.999</span>
+            <a href="#"><img src="resources/addToCart.png" alt="Comprar"></a>
+        </div>
+        <!-- Producto de electrónica 7 -->
+        <div class="product" onclick="showProductDetails('Samsung Galaxy S24 Ultra', '256 GB', '12 GB', '6.8 pulgadas', '200 MP', '5000 mAh', 'resources/24ULTRA.jpg', '$2.599.999')">
+            <img src="resources/chombaLacoste.jpg" alt="Producto Samsung S24 Ultra">
+            <p>Samsung Galaxy S24 Ultra</p>
+            <span>$2.599.999</span>
+            <a href="#"><img src="resources/addToCart.png" alt="Comprar"></a>
+        </div>
+        <!-- Producto de electrónica 8 -->
+        <div class="product" onclick="showProductDetails('Samsung Galaxy S24 Ultra', '256 GB', '12 GB', '6.8 pulgadas', '200 MP', '5000 mAh', 'resources/24ULTRA.jpg', '$2.599.999')">
+            <img src="resources/chombaLacoste.jpg" alt="Producto Samsung S24 Ultra">
+            <p>Samsung Galaxy S24 Ultra</p>
+            <span>$2.599.999</span>
+            <a href="#"><img src="resources/addToCart.png" alt="Comprar"></a>
+        </div>
+        <!-- Producto de electrónica 9 -->
+        <div class="product" onclick="showProductDetails('Samsung Galaxy S24 Ultra', '256 GB', '12 GB', '6.8 pulgadas', '200 MP', '5000 mAh', 'resources/24ULTRA.jpg', '$2.599.999')">
+            <img src="resources/chombaLacoste.jpg" alt="Producto Samsung S24 Ultra">
+            <p>Samsung Galaxy S24 Ultra</p>
+            <span>$2.599.999</span>
+            <a href="#"><img src="resources/addToCart.png" alt="Comprar"></a>
+        </div>
+        <!-- Producto de electrónica 10 -->
+        <div class="product" onclick="showProductDetails('Samsung Galaxy S24 Ultra', '256 GB', '12 GB', '6.8 pulgadas', '200 MP', '5000 mAh', 'resources/24ULTRA.jpg', '$2.599.999')">
+            <img src="resources/chombaLacoste.jpg" alt="Producto Samsung S24 Ultra">
+            <p>Samsung Galaxy S24 Ultra</p>
+            <span>$2.599.999</span>
+            <a href="#"><img src="resources/addToCart.png" alt="Comprar"></a>
+        </div>
+        <!-- Producto de electrónica 11 -->
+        <div class="product" onclick="showProductDetails('Samsung Galaxy S24 Ultra', '256 GB', '12 GB', '6.8 pulgadas', '200 MP', '5000 mAh', 'resources/24ULTRA.jpg', '$2.599.999')">
+            <img src="resources/chombaLacoste.jpg" alt="Producto Samsung S24 Ultra">
+            <p>Samsung Galaxy S24 Ultra</p>
+            <span>$2.599.999</span>
+            <a href="#"><img src="resources/addToCart.png" alt="Comprar"></a>
+        </div>
+        <!-- Producto de electrónica 12 -->
+        <div class="product" onclick="showProductDetails('Samsung Galaxy S24 Ultra', '256 GB', '12 GB', '6.8 pulgadas', '200 MP', '5000 mAh', 'resources/24ULTRA.jpg', '$2.599.999')">
+            <img src="resources/chombaLacoste.jpg" alt="Producto Samsung S24 Ultra">
+            <p>Samsung Galaxy S24 Ultra</p>
+            <span>$2.599.999</span>
+            <a href="#"><img src="resources/addToCart.png" alt="Comprar"></a>
+        </div>
+    </div>
+</section>
+
+
+    <footer>
+        <p>&copy; 2024 Mercado Negro</p>
+    </footer>
+    <!DOCTYPE html>
+    <script src="script.js"></script>
+</body>
+</html>

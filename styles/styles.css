@@ -1,0 +1,489 @@
+/* GLOBAL ------------------------------------------------------------------- */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5; /* Cambiado de degradado radial a color de fondo original */
+    color: #000000; /* Cambiado el color del texto a negro */
+}
+
+/* NAV BAR ------------------------------------------------------------------- */
+header {
+    background-color: #494949;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.logo img {
+    width: 120px;
+}
+
+.search-bar {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center; /* Centrar la barra de búsqueda */
+    align-items: center;
+}
+
+.search-bar input {
+    width: 50%; /* Ajusta el tamaño según lo que necesites */
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.search-bar button {
+    background-color: #494949;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 10px;
+    padding: 10px; /* Asegura que el ícono tenga espacio */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-bar button:hover {
+    background-color: #8f8f8f;
+}
+
+.search-bar button img.search-icon {
+    width: 24px; /* Ajusta el tamaño de la imagen */
+    height: 24px; /* Puedes ajustar o dejar auto si la imagen mantiene proporciones */
+}
+
+/* NAV LINKS ------------------------------------------------------------------- */
+.nav-links {
+    display: flex;
+}
+
+.nav-links a {
+    font-family: Arial;
+    margin-left: 20px;
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    color: #9b9b9b;
+}
+
+/* DROPDOWN ---------------------------------------------------------- */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    position: absolute;
+    right: 0;
+    background-color: #fff;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    z-index: 45;
+    border-radius: 5px;
+    margin-top: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.dropdown.show .dropdown-content {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.dropdown-content p {
+    margin: 0;
+    padding: 8px 16px;
+    color: #333;
+    font-size: 16px;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 10px 16px;
+    color: #3483fa;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+}
+
+.dropdown-content a:hover {
+    background-color: #e0e0e0;
+}
+
+/* Ajuste del Carrusel de Anuncios ------------------------------------------------------------------- */
+.carousel-container-ad {
+    width: 80%;
+    overflow: hidden;
+    z-index: 1;
+    margin: 0 auto;
+    position: relative;
+}
+
+.carousel-container-ad::before,
+.carousel-container-ad::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 100px;
+    height: 100%;
+    z-index: 3;
+}
+
+.carousel-container-ad::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(245, 245, 245, 1), rgba(245, 245, 245, 0));
+}
+
+.carousel-container-ad::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(245, 245, 245, 1), rgba(245, 245, 245, 0));
+}
+
+.ad-images {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.ad-images img {
+    width: 100%;
+    margin-right: 20px;
+    border-radius: 10px;
+}
+
+.carousel-prev-ad,
+.carousel-next-ad {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(88, 88, 88, 0.41);
+    color: white;
+    border: 1px solid rgba(200, 200, 200, 0);
+    padding: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    z-index: 10;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.carousel-next-ad {
+    right: -2%;
+}
+
+.carousel-prev-ad {
+    left: -2%;
+}
+
+.carousel-prev-ad:hover,
+.carousel-next-ad:hover {
+    background-color: rgba(221, 221, 221, 0.8);
+}
+
+/* CATEGORIAS ------------------------------------------------------------------- */
+.categories {
+    background-color: #fff;
+    padding: 20px;
+    text-align: center;
+    width: 70%;
+    margin: 0 auto;
+    border-radius: 10px;
+    position: relative;
+    top: -40px;
+    z-index: 2;
+}
+
+.category-list a {
+    display: inline-block;
+    margin: 10px 15px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.category-list a:hover {
+    color: #3483fa;
+}
+
+/* PRODUCTOS DESTACADOS ------------------------------------------------------------------- */
+.featured-products {
+    padding: 20px;
+    background-color: #fff;
+    width: 70%;
+    margin: 20px auto;
+    border-radius: 10px;
+}
+
+.featured-products h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Contenedor del carrusel */
+.carousel-container {
+    position: relative;
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+/* Lista de productos alineada en fila */
+.product-list {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Cada producto tiene un ancho fijo */
+.product {
+    min-width: 16.66%;
+    background-color: #fff;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.product:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.product img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.product p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.product a {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background-color: #f0f0f0;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 50px;
+    border: 2px solid #cccccc;
+}
+
+.product a img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    vertical-align: middle;
+}
+
+.product span {
+    font-size: 20px;
+    color: #3483fa;
+    display: block;
+    margin: 10px 0;
+}
+
+/* Botones de navegación */
+.carousel-prev,
+.carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    z-index: 1;
+}
+
+.carousel-prev {
+    left: 0;
+}
+
+.carousel-next {
+    right: 0;
+}
+
+.carousel-prev:hover,
+.carousel-next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Electrónica ------------------------------------------------------------------- */
+.electronics {
+    padding: 20px;
+    background-color: #fff;
+    width: 70%;
+    margin: 20px auto;
+    border-radius: 10px;
+}
+
+.electronics h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.electronics-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 80%;
+    margin: 0 auto;
+    padding-bottom: 5%;
+}
+
+.electronics-list .product {
+    background-color: #fff;
+    padding: 15px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    width: 90%;
+    height: auto;
+}
+
+.electronics-list .product img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+}
+
+.electronics-list .product:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.electronics-list .product p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.electronics-list .product a {
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    background-color: #f0f0f0;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 45px;
+    border: 2px solid #cccccc;
+}
+
+.electronics-list .product a img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    vertical-align: middle;
+}
+
+.electronics-list .product span {
+    font-size: 18px;
+    color: #3483fa;
+    display: block;
+    margin: 10px 0;
+}
+
+/* MODA --------------------------------------------------------------------- */
+
+.fashion {
+    padding: 20px;
+    background-color: #fff;
+    width: 70%;
+    margin: 20px auto;
+    border-radius: 10px;
+}
+
+.fashion h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.fashion-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 80%;
+    margin: 0 auto;
+    padding-bottom: 5%;
+}
+
+.fashion-list .product {
+    background-color: #fff;
+    padding: 15px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    width: 90%;
+    height: auto;
+}
+
+.fashion-list .product img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+}
+
+.fashion-list .product:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.fashion-list .product p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.fashion-list .product a {
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    background-color: #f0f0f0;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 45px;
+    border: 2px solid #cccccc;
+}
+
+.fashion-list .product a img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    vertical-align: middle;
+}
+
+.fashion-list .product span {
+    font-size: 18px;
+    color: #3483fa;
+    display: block;
+    margin: 10px 0;
+}
+
+/* FOOTER ------------------------------------------------------------------- */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}

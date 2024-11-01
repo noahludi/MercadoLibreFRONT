@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/login.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> <!-- Material Icons -->
+    <title>Iniciar Sesión</title>
+</head>
+<body>
+
+    <!-- Botón de regreso -->
+    <a href="index.html" class="back-button">
+        <span class="material-icons">arrow_back</span>
+    </a>
+
+    <div class="login-container">
+        <img src="resources/Logo2.png" alt="Logo" class="logo">
+        <h2>Bienvenido!</h2>
+        <form action="login.html" method="POST">
+            <div class="form-group">
+                <label for="username">Usuario</label>
+                <input type="text" id="username" name="username" placeholder="Ingresa tu usuario" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña" required>
+            </div>
+            
+            <!-- Campos adicionales -->
+            <div id="additionalFields">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Ingresa tu email">
+                </div>
+                <div class="form-group">
+                    <label for="dni">DNI</label>
+                    <input type="text" id="dni" name="dni" placeholder="Ingresa tu DNI">
+                </div>
+                <div class="form-group">
+                    <label for="fullname">Nombre</label>
+                    <input type="text" id="name" name="name" placeholder="Ingresa tu nombre">
+                </div>
+                <div class="form-group">
+                    <label for="fullname">Apellido</label>
+                    <input type="text" id="lastname" name="lastname" placeholder="Ingresa tu apellido">
+                </div>
+            </div>
+            
+            <button type="submit" class="btn" id="submitButton">Iniciar Sesión</button>
+        </form>
+        <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+        <a href="#" class="register" id="registerLink">Registrate</a>
+    </div>
+
+    <script src="scripts/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+/* Estilos generales del cuerpo */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    position: relative; /* Necesario para que el botón se posicione correctamente respecto al contenedor */
+    background-color: #fff;
+    padding: 40px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    margin: auto; /* Centrar el login-container */
+}
+
+/* Estilo del logo */
+.logo {
+    width: 40%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+/* Estilo del título */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Estilos de los campos de entrada */
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+input[type="text"], input[type="password"], input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Botón de enviar */
+.btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn:hover {
+    background-color: #218838;
+}
+
+/* Estilo del enlace para contraseña olvidada */
+.forgot-password {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+/* Estilo inicial de los campos adicionales */
+#additionalFields {
+    overflow: hidden;  /* Ocultar contenido desbordado */
+    height: 0;  /* Inicialmente oculto */
+    opacity: 0;  /* Inicialmente invisible */
+    transition: height 0.5s ease, opacity 0.5s ease 0.5s;  /* Transición con retraso para la opacidad */
+}
+
+/* Clase que muestra los campos adicionales */
+.show {
+    height: auto;  /* Dejar que JavaScript calcule la altura */
+    opacity: 1;  /* Hacer visible el contenido */
+}
+
+
+/* BOTON REGRESO ------------------------------------------ */
+
+/* Estilo para el botón de regreso */
+.back-button {
+    position: fixed; /* Fijo en la esquina superior izquierda del body */
+    top: 1.5%; /* Ajustado para estar cerca del borde superior */
+    left: 1%; /* Ajustado para estar cerca del borde izquierdo */
+    background-color: rgba(255, 255, 255, 0); /* Botón semitransparente */
+    color: rgba(92, 92, 92, 0.5);
+    font-size: 30px;
+    border-radius: 50%;
+    padding: 15px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    z-index: 1000; /* Asegura que el botón esté visible sobre todo el contenido */
+}
+
+/* Hover y active para el botón */
+.back-button:hover {
+    color: black; /* Cambia el color del ícono */
+}
+
+.back-button:active {
+    background-color: rgba(0, 0, 0, 0.05); /* Alterna entre negro */
+    color: white; /* Alterna entre blanco */
+}
+
+.material-icons {
+    font-size: inherit; /* Mantiene el tamaño del icono basado en el contenedor */
+}
+
