@@ -1,4 +1,32 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", async function() {
+    // Verificación de token
+    const token = localStorage.getItem("token");
+
+    if (token) {
+        try {
+            const response = await fetch("http://localhost:5142/api/account/getUserInfo", {
+                method: "GET",
+                headers: {
+                    "Authorization": "Bearer " + token
+                }
+            });
+
+            if (response.ok) {
+                const userData = await response.json();
+                document.getElementById("usernameDisplay").textContent = "Bienvenido, " + userData.firstName + "!";
+            } else {
+                console.error("Error al cargar datos del usuario");
+                // Redirige al login si hay un problema de autorización
+                //window.location.href = "login.html";
+            }
+        } catch (error) {
+            console.error("Error de conexión:", error);
+            //window.location.href = "login.html";
+        }
+    } else {
+        //window.location.href = "login.html";
+    }
+
     // Carrusel de productos
     let currentIndex = 0;
     const productList = document.querySelector('.product-list');
@@ -6,32 +34,26 @@ document.addEventListener("DOMContentLoaded", function() {
     const totalProducts = products.length;
     const productWidth = products[0].clientWidth;
 
-    // Verifica si los botones de carrusel de productos están siendo detectados
-    console.log(document.querySelector('.carousel-next')); 
-    console.log(document.querySelector('.carousel-prev')); 
-
     // Avanza en el carrusel de productos
     document.querySelector('.carousel-next').addEventListener('click', () => {
-        console.log("Carrusel productos: Botón Siguiente presionado");
         currentIndex++;
         productList.style.transition = 'transform 0.5s ease-in-out';
         productList.style.transform = `translateX(${-currentIndex * productWidth}px)`;
 
         if (currentIndex >= totalProducts) {
             setTimeout(() => {
-                productList.style.transition = 'none'; 
+                productList.style.transition = 'none';
                 currentIndex = 0;
-                productList.style.transform = `translateX(0)`; // Vuelve al inicio sin transición visible
+                productList.style.transform = `translateX(0)`;
             }, 500);
         }
     });
 
     // Retrocede en el carrusel de productos
     document.querySelector('.carousel-prev').addEventListener('click', () => {
-        console.log("Carrusel productos: Botón Previo presionado");
         currentIndex--;
         if (currentIndex < 0) {
-            currentIndex = totalProducts - 1; // Si retrocede más allá del inicio, vuelve al final
+            currentIndex = totalProducts - 1;
             productList.style.transition = 'none';
             productList.style.transform = `translateX(${-currentIndex * productWidth}px)`;
         }
@@ -48,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const ads = document.querySelectorAll('.ad-images img');
     const totalAds = ads.length;
 
-    // Avanza automáticamente en el carrusel de publicidad cada 2 segundos
+    // Avanza automáticamente en el carrusel de publicidad cada 5 segundos
     setInterval(() => {
         currentAdIndex++;
         if (currentAdIndex >= totalAds) {
@@ -56,8 +78,9 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         adList.style.transition = 'transform 0.5s ease-in-out';
         adList.style.transform = `translateX(${-currentAdIndex * ads[0].clientWidth}px)`;
-    }, 5000); // Cambia cada 2 segundos
+    }, 5000);
 
+    // Control manual de publicidad
     document.querySelector('.carousel-next-ad').addEventListener('click', () => {
         currentAdIndex++;
         if (currentAdIndex >= totalAds) {
@@ -78,9 +101,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Dropdown para el ícono de cuenta
     document.getElementById('accountIcon').addEventListener('click', function(event) {
-        event.preventDefault(); // Evita la recarga de la página al hacer clic
+        event.preventDefault();
         const dropdown = document.querySelector('.dropdown');
-        dropdown.classList.toggle('show'); // Alterna la visibilidad del dropdown
+        dropdown.classList.toggle('show');
     });
 
     // Cerrar el dropdown si se hace clic fuera de él
@@ -97,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function() {
     };
 });
 
-// Mover la función fuera del DOMContentLoaded para que sea accesible desde el HTML
+// Función para mostrar detalles del producto y redirigir
 function showProductDetails(name, memory, ram, screen, camera, battery, image, price) {
     // Guardar los datos del producto en localStorage
     localStorage.setItem('productName', name);

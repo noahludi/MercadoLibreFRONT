@@ -28,40 +28,32 @@ document.addEventListener('DOMContentLoaded', function() {
     loginForm.addEventListener("submit", async (event) => {
         event.preventDefault();
 
-        const usernameElement = document.getElementById("username");
-        const passwordElement = document.getElementById("password");
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
 
-        if (!usernameElement || !passwordElement) {
+        if (!username || !password) {
             console.error("Elementos de login no encontrados.");
             return;
         }
 
-        const username = usernameElement.value;
-        const password = passwordElement.value;
-
         if (isRegisterClicked) {
-            const emailElement = document.getElementById("email");
-            const dniElement = document.getElementById("dni");
-            const nameElement = document.getElementById("name");
-            const lastnameElement = document.getElementById("lastname");
+            const email = document.getElementById("email").value;
+            const dni = document.getElementById("dni").value;
+            const firstName = document.getElementById("name").value;
+            const lastName = document.getElementById("lastname").value;
 
-            if (!emailElement || !dniElement || !nameElement || !lastnameElement) {
+            if (!email || !dni || !firstName || !lastName) {
                 console.error("Elementos de registro no encontrados.");
                 return;
             }
 
-            const email = emailElement.value;
-            const dni = dniElement.value;
-            const firstName = nameElement.value;
-            const lastName = lastnameElement.value;
-
             const registerData = {
-                username: username,
-                password: password,
-                email: email,
-                dni: dni,
-                firstName: firstName,
-                lastName: lastName
+                username,
+                password,
+                email,
+                dni,
+                firstName,
+                lastName
             };
 
             try {
@@ -70,7 +62,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     headers: {
                         "Content-Type": "application/json"
                     },
-                    mode: "no-cors", // Ajuste temporal para evitar problemas de CORS
                     body: JSON.stringify(registerData)
                 });
 
@@ -86,8 +77,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         } else {
             const loginData = {
-                username: username,
-                password: password
+                username,
+                password
             };
 
             try {
@@ -96,14 +87,20 @@ document.addEventListener('DOMContentLoaded', function() {
                     headers: {
                         "Content-Type": "application/json"
                     },
-                    mode: "no-cors", // Ajuste temporal para evitar problemas de CORS
                     body: JSON.stringify(loginData)
                 });
 
                 if (response.ok) {
-                    alert("Inicio de sesión exitoso.");
+                    const result = await response.json();
+                    // Almacena el token en localStorage
+                    localStorage.setItem("token", result.token);
+                    localStorage.setItem("expiration", result.expiration);
+                    console.log("Token almacenado en localStorage:", localStorage.getItem("token"));
+                    // Redirige a index.html
+                    window.location.href = "index.html";
                 } else {
-                    alert("Error en el inicio de sesión.");
+                    const error = await response.json();
+                    alert("Error en el inicio de sesión: " + (error.message || "Ocurrió un error en el inicio de sesión."));
                 }
             } catch (error) {
                 console.error("Error de conexión:", error);
