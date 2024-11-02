@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", async function() {
 
     if (token) {
         try {
-            const response = await fetch("http://localhost:5142/api/account/getUserInfo", {
+            const response = await fetch("http://mercadoplus.somee.com/api/account/getUserInfo", {
                 method: "GET",
                 headers: {
                     "Authorization": "Bearer " + token

@@ -1,0 +1,104 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
+}
+.profile-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 320px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.profile-photo-container {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #ccc;
+}
+.profile-photo-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.edit-icon {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 50%;
+    padding: 5px;
+    font-size: 18px;
+    cursor: pointer;
+}
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+.form-group input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background-color: #e0e0e0;
+    color: #666;
+    border-radius: 5px;
+    outline: none;
+    font-size: 14px;
+}
+.form-group input:disabled {
+    background-color: #e0e0e0;
+}
+.edit-icon-field {
+    margin-left: 10px;
+    color: #007bff;
+    cursor: pointer;
+    font-size: 20px;
+}
+.confirm-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+}
+.confirm-button:hover {
+    background-color: #0056b3;
+}
+.form-group input#currentPassword {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    color: #666;
+}
+.back-button {
+    display: flex;
+    align-items: center;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+.back-button .material-icons {
+    margin-right: 5px;
+    font-size: 18px;
+}
+.back-button:hover {
+    background-color: #0056b3;
+}

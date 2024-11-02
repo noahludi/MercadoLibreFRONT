@@ -118,6 +118,26 @@ header {
     background-color: #f0f0f0;
 }
 
+/* Estilo para los enlaces con el id 'configButton' */
+.dropdown-content a#configButton {
+    display: block;
+    width: 80%; /* Ocupa todo el ancho */
+    padding: 10px 0px;
+    color: #333; /* Color del texto */
+    text-align: left; /* Alineación a la izquierda */
+    text-decoration: none;
+    font-weight: normal;
+    background-color: transparent; /* Sin fondo azul */
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+/* Cambia el color de fondo cuando el usuario hace hover solo en los enlaces con id 'configButton' */
+.dropdown-content a#configButton:hover {
+    background-color: #f0f0f0; /* Fondo gris claro al pasar el mouse */
+    color: #000; /* Color de texto negro */
+}
+
 .dropdown-content a:hover {
     background-color: #e0e0e0;
 }

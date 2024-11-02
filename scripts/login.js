@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
             };
 
             try {
-                const response = await fetch("http://localhost:5142/api/account/register", {
+                const response = await fetch("http://mercadoplus.somee.com/api/account/register", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
             };
 
             try {
-                const response = await fetch("http://localhost:5142/api/account/login", {
+                const response = await fetch("http://mercadoplus.somee.com/api/account/login", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="styles/userSettings.css">
+    <title>Editar Perfil</title>
+</head>
+<body>
+
+<div class="profile-container">
+    <!-- Botón para volver atrás -->
+    <button onclick="window.history.back()" class="back-button">
+        <span class="material-icons">arrow_back</span> Volver
+    </button>
+
+    <div class="profile-photo-container">
+        <img src="resources/profile.jpg" alt="Foto de perfil" id="profilePhoto">
+        <span class="material-icons edit-icon" onclick="triggerFileInput()">edit</span>
+    </div>
+    <form id="profileForm">
+        <input type="file" id="fileInput" accept="image/*" style="display: none;" onchange="uploadPhoto(event)">
+        
+        <div class="form-group">
+            <input type="text" id="username" name="username" placeholder="Username" disabled>
+            <span class="material-icons edit-icon-field" onclick="enableEdit('username')">edit</span>
+        </div>
+        <div class="form-group">
+            <input type="text" id="firstName" name="firstName" placeholder="Nombre" disabled>
+            <span class="material-icons edit-icon-field" onclick="enableEdit('firstName')">edit</span>
+        </div>
+        <div class="form-group">
+            <input type="text" id="lastName" name="lastName" placeholder="Apellido" disabled>
+            <span class="material-icons edit-icon-field" onclick="enableEdit('lastName')">edit</span>
+        </div>
+        <div class="form-group">
+            <input type="email" id="email" name="email" placeholder="Email" disabled>
+            <span class="material-icons edit-icon-field" onclick="enableEdit('email')">edit</span>
+        </div>
+        <div class="form-group">
+            <input type="password" id="password" name="password" placeholder="Nueva Contraseña" disabled>
+            <span class="material-icons edit-icon-field" onclick="enableEdit('password')">edit</span>
+        </div>
+        <div class="form-group">
+            <input type="password" id="currentPassword" name="currentPassword" placeholder="Contraseña Actual">
+        </div>
+        <!-- Aseguramos que el botón "Confirmar" tenga el id "confirmButton" para ser manejado en el JS -->
+        <button type="button" class="confirm-button" id="confirmButton">Confirmar</button>
+    </form>
+</div>
+
+<script src="scripts/userSettings.js"></script>
+</body>
+</html>
