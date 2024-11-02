@@ -32,28 +32,29 @@ document.addEventListener('DOMContentLoaded', function() {
         const password = document.getElementById("password").value;
 
         if (!username || !password) {
-            console.error("Elementos de login no encontrados.");
+            console.error("Usuario o contraseña no proporcionados.");
             return;
         }
 
         if (isRegisterClicked) {
+            // Proceso de Registro
             const email = document.getElementById("email").value;
             const dni = document.getElementById("dni").value;
             const firstName = document.getElementById("name").value;
             const lastName = document.getElementById("lastname").value;
 
             if (!email || !dni || !firstName || !lastName) {
-                console.error("Elementos de registro no encontrados.");
+                console.error("Campos de registro faltantes.");
                 return;
             }
 
             const registerData = {
-                username,
-                password,
-                email,
-                dni,
-                firstName,
-                lastName
+                username: username,
+                password: password,
+                email: email,
+                dni: dni,
+                firstName: firstName,
+                lastName: lastName
             };
 
             try {
@@ -68,7 +69,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (response.ok) {
                     alert("Registro exitoso.");
                 } else {
-                    alert("Error en el registro.");
+                    const error = await response.json();
+                    alert("Error en el registro: " + (error.message || "Ocurrió un error en el registro."));
                 }
             } catch (error) {
                 console.error("Error de conexión:", error);
@@ -76,9 +78,10 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
         } else {
+            // Proceso de Login
             const loginData = {
-                username,
-                password
+                username: username,
+                password: password
             };
 
             try {
