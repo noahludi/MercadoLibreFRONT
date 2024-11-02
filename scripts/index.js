@@ -1,31 +1,96 @@
 document.addEventListener("DOMContentLoaded", async function() {
-    // Verificación de token
     const token = localStorage.getItem("token");
 
     if (token) {
         try {
-            const response = await fetch("http://mercadoplus.somee.com/api/account/getUserInfo", {
+            // Obtener información del usuario
+            const userResponse = await fetch("http://mercadoplus.somee.com/api/account/getUserInfo", {
                 method: "GET",
                 headers: {
                     "Authorization": "Bearer " + token
                 }
             });
 
-            if (response.ok) {
-                const userData = await response.json();
-                document.getElementById("usernameDisplay").textContent = "Bienvenido, " + userData.firstName + "!";
+            if (userResponse.ok) {
+                const userData = await userResponse.json();
+
+                // Configurar el texto de bienvenida
+                const usernameDisplay = document.getElementById("usernameDisplay");
+                usernameDisplay.textContent = "Hola, " + userData.firstName + "!";
+                usernameDisplay.style.textAlign = "center"; // Centrar el texto
+                usernameDisplay.style.fontWeight = "bold";  // Texto en negrita
+
+                // Si el usuario tiene una foto de perfil, obtener el ID y cargar la imagen
+                const profilePhotoId = userData.profilePhotoId;
+                if (profilePhotoId) {
+                    const photoResponse = await fetch(`http://mercadoplus.somee.com/api/photos/${profilePhotoId}`, {
+                        method: "GET",
+                        headers: {
+                            "Authorization": "Bearer " + token
+                        }
+                    });
+
+                    if (photoResponse.ok) {
+                        const photoData = await photoResponse.json();
+                        const imageBase64 = photoData.imageData;
+
+                        // Crear elemento de imagen y mostrar en el dropdown
+                        const profileImage = document.createElement("img");
+                        profileImage.src = `data:image/jpeg;base64,${imageBase64}`;
+                        profileImage.alt = "Foto de perfil";
+                        profileImage.style.width = "80px";  // Tamaño de la imagen
+                        profileImage.style.height = "80px";
+                        profileImage.style.borderRadius = "50%";
+                        profileImage.style.display = "block";
+                        profileImage.style.margin = "0 auto 10px"; // Centrado y margen inferior
+
+                        // Insertar la imagen en el dropdown
+                        const dropdownContent = document.querySelector(".dropdown-content");
+                        dropdownContent.insertBefore(profileImage, dropdownContent.firstChild);
+
+                        console.log("Foto de perfil mostrada correctamente.");
+                    } else {
+                        console.error("Error al cargar la imagen de perfil");
+                    }
+                }
+
+                // Cambiar el enlace de login a "Cerrar Sesión"
+                const loginLink = document.querySelector(".dropdown-content a[href='login.html']");
+                if (loginLink) {
+                    loginLink.textContent = "Cerrar Sesión";
+                    loginLink.href = "#";
+                    loginLink.addEventListener("click", () => {
+                        localStorage.removeItem("token");
+                        window.location.reload();
+                    });
+                }
             } else {
                 console.error("Error al cargar datos del usuario");
-                // Redirige al login si hay un problema de autorización
-                //window.location.href = "login.html";
             }
         } catch (error) {
             console.error("Error de conexión:", error);
-            //window.location.href = "login.html";
         }
-    } else {
-        //window.location.href = "login.html";
     }
+
+    // Evento para alternar el dropdown
+    document.getElementById('accountIcon').addEventListener('click', function(event) {
+        event.preventDefault();
+        const dropdown = document.querySelector('.dropdown');
+        dropdown.classList.toggle('show');
+    });
+
+    // Cerrar el dropdown si se hace clic fuera de él
+    window.onclick = function(event) {
+        if (!event.target.closest('.dropdown') && !event.target.matches('.material-symbols-outlined')) {
+            const dropdowns = document.getElementsByClassName('dropdown');
+            for (let i = 0; i < dropdowns.length; i++) {
+                const openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    };
 
     // Carrusel de productos
     let currentIndex = 0;
@@ -98,26 +163,6 @@ document.addEventListener("DOMContentLoaded", async function() {
         adList.style.transition = 'transform 0.5s ease-in-out';
         adList.style.transform = `translateX(${-currentAdIndex * ads[0].clientWidth}px)`;
     });
-
-    // Dropdown para el ícono de cuenta
-    document.getElementById('accountIcon').addEventListener('click', function(event) {
-        event.preventDefault();
-        const dropdown = document.querySelector('.dropdown');
-        dropdown.classList.toggle('show');
-    });
-
-    // Cerrar el dropdown si se hace clic fuera de él
-    window.onclick = function(event) {
-        if (!event.target.closest('.dropdown') && !event.target.matches('.material-symbols-outlined')) {
-            const dropdowns = document.getElementsByClassName('dropdown');
-            for (let i = 0; i < dropdowns.length; i++) {
-                const openDropdown = dropdowns[i];
-                if (openDropdown.classList.contains('show')) {
-                    openDropdown.classList.remove('show');
-                }
-            }
-        }
-    };
 });
 
 // Función para mostrar detalles del producto y redirigir

@@ -138,15 +138,13 @@ body {
     height: auto;
 }
 
-/* NAV BAR ---------------------------------------------------------------- */
+/* NAV BAR ------------------------------------------------------------------- */
 header {
     background-color: #494949;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    width: 100%; /* Asegurarse de que ocupe todo el ancho */
-    box-sizing: border-box; /* Para incluir padding en el ancho total */
 }
 
 .logo img {
@@ -161,7 +159,7 @@ header {
 }
 
 .search-bar input {
-    width: 50%; /* Ajusta el tamaño según lo que necesites */
+    width: 50%;
     padding: 10px;
     border: none;
     border-radius: 5px;
@@ -190,12 +188,12 @@ header {
     height: 24px;
 }
 
+/* NAV LINKS */
 .nav-links {
     display: flex;
 }
 
 .nav-links a {
-    font-family: Arial;
     margin-left: 20px;
     text-decoration: none;
     color: #ffffff;
@@ -206,37 +204,32 @@ header {
     color: #9b9b9b;
 }
 
-/* DROPDOWN ANIMADO ---------------------------------------------------------- */
+/* DROPDOWN */
 .dropdown {
     position: relative;
     display: inline-block;
 }
 
-/* El contenido del dropdown */
 .dropdown-content {
     position: absolute;
-    right: 0; /* Alinea el dropdown a la derecha del ícono */
+    right: 0;
     background-color: #fff;
     min-width: 200px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     padding: 10px;
-    z-index: 15;
+    z-index: 45;
     border-radius: 5px;
-    margin-top: 10px; /* Espacio entre el ícono y el dropdown */
-    opacity: 0; /* Inicialmente invisible */
-    visibility: hidden; /* Oculta el dropdown visualmente, pero permite las animaciones */
-    transform: translateY(-10px); /* Animación inicial (movimiento hacia arriba) */
-    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, transform 0.3s ease-in-out;
+    margin-top: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 }
 
-/* Mostrar el dropdown cuando el contenedor se activa */
 .dropdown.show .dropdown-content {
-    opacity: 1; /* Visible con fade in */
-    visibility: visible; /* Mostrar el dropdown */
-    transform: translateY(0); /* Animación para que baje suavemente */
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
-/* Estilos del contenido del dropdown */
 .dropdown-content p {
     margin: 0;
     padding: 8px 16px;
@@ -255,6 +248,25 @@ header {
     background-color: #f0f0f0;
 }
 
+/* Estilo para los enlaces con el id 'configButton' */
+.dropdown-content a#configButton {
+    display: block;
+    width: 80%;
+    padding: 10px 0;
+    color: #333;
+    text-align: left;
+    font-weight: normal;
+    background-color: transparent;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+.dropdown-content a#configButton:hover {
+    background-color: #f0f0f0;
+    color: #000;
+}
+
 .dropdown-content a:hover {
     background-color: #e0e0e0;
 }
+

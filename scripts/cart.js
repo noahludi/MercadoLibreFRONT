@@ -1,6 +1,4 @@
-document.addEventListener('DOMContentLoaded', async function () {
-    console.log("Inicializando script de detalles de producto...");
-
+document.addEventListener("DOMContentLoaded", async function () {
     const token = localStorage.getItem("token");
 
     // Función para obtener la información del usuario
@@ -22,8 +20,8 @@ document.addEventListener('DOMContentLoaded', async function () {
                     // Actualizar texto de bienvenida
                     const usernameDisplay = document.getElementById("usernameDisplay");
                     usernameDisplay.textContent = "Hola, " + userData.firstName + "!";
-                    usernameDisplay.style.textAlign = "center"; // Centrar el texto
-                    usernameDisplay.style.fontWeight = "bold";  // Texto en negrita
+                    usernameDisplay.style.textAlign = "center"; 
+                    usernameDisplay.style.fontWeight = "bold";
 
                     // Cargar la foto de perfil si existe
                     const profilePhotoId = userData.profilePhotoId;
@@ -70,8 +68,6 @@ document.addEventListener('DOMContentLoaded', async function () {
             } catch (error) {
                 console.error("Error de conexión:", error);
             }
-        } else {
-            console.log("No se encontró un token en localStorage.");
         }
     }
 
@@ -87,45 +83,14 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     // Cerrar el dropdown si se hace clic fuera de él
     window.onclick = function (event) {
-        if (!event.target.closest(".dropdown") && !event.target.matches("#accountIcon, .material-symbols-outlined")) {
-            const dropdown = document.querySelector(".dropdown");
-            if (dropdown.classList.contains("show")) {
-                dropdown.classList.remove("show");
+        if (!event.target.closest(".dropdown") && !event.target.matches(".material-symbols-outlined")) {
+            const dropdowns = document.getElementsByClassName("dropdown");
+            for (let i = 0; i < dropdowns.length; i++) {
+                const openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains("show")) {
+                    openDropdown.classList.remove("show");
+                }
             }
         }
     };
-
-    // Cargar detalles del producto desde localStorage
-    console.log("Cargando detalles del producto desde localStorage...");
-    const name = localStorage.getItem('productName');
-    const memory = localStorage.getItem('productMemory');
-    const ram = localStorage.getItem('productRam');
-    const screen = localStorage.getItem('productScreen');
-    const camera = localStorage.getItem('productCamera');
-    const battery = localStorage.getItem('productBattery');
-    const image = localStorage.getItem('productImage');
-    const price = localStorage.getItem('productPrice');
-
-    // Mostrar los detalles del producto en la página
-    document.querySelector('.product-info h1').textContent = name || 'Producto no disponible';
-    document.querySelector('.product-info h2').textContent = price || 'Precio no disponible';
-    document.querySelector('.product-features').innerHTML = `
-        <li>${memory || 'N/A'}</li>
-        <li>${ram || 'N/A'}</li>
-        <li>${screen || 'N/A'}</li>
-        <li>${camera || 'N/A'}</li>
-        <li>${battery || 'N/A'}</li>
-    `;
-    document.querySelector('.product-image img').src = image || 'resources/default-image.jpg';
-
-    // Redirección al checkout
-    const buyNowButton = document.querySelector('.buy-now-button');
-    buyNowButton.addEventListener('click', function () {
-        if (price) {
-            console.log(`Redirigiendo al checkout con el precio: ${price}`);
-            window.location.href = `checkout.html?amount=${price}`;
-        } else {
-            console.log("No hay precio disponible para redirigir al checkout.");
-        }
-    });
 });
