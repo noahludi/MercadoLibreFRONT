@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" />
+    <link rel="stylesheet" href="styles/product-details.css">
+    <script src="scripts/product-details.js"></script>
+    <title>Detalles del Producto</title>
+</head>
+<body>
+
+    <!-- Barra de navegación -->
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="resources/logo.png" alt="Logo">
+            </a>            
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Buscar productos, marcas y más...">
+            <button><img src="resources/search.png" class="search-icon" alt="Buscar"/></button> <!-- Icono de búsqueda -->
+        </div>
+        <div class="nav-links">
+            <a href="#"><span class="material-symbols-outlined">home</span></a>
+            <a href="cart.html"><span class="material-symbols-outlined">shopping_cart</span></a>
+            <div class="dropdown">
+                <a href="#" id="accountIcon"><span class="material-symbols-outlined">account_circle</span></a>
+                <div class="dropdown-content">
+                    <img id="profilePicture" src="" alt="Foto de perfil" style="width: 60px; height: 60px; border-radius: 50%; display: none; margin: 0 auto 10px;"/>
+                    <p id="usernameDisplay">Bienvenido, Invitado</p>
+                    <a id="configButton" href="userSettings.html">Configuración</a>
+                    <a id="configButton" href="userHistory.html">Historial</a>
+                    <a id="configButton" href="userQuestions.html">Preguntas</a>
+                    <a id="configButton" href="userOpinions.html">Opiniones</a>
+                    <a href="login.html">Ingresar</a>
+                </div>
+                                
+            </div>
+        </div>
+    </header>
+
+    <!-- Sección principal de detalles del producto -->
+    <div class="product-details-container">
+        <div class="product-image">
+            <img src="resources/default-image.jpg" alt="Producto">
+            <div class="seller-description">
+                <h3>Descripción del Producto</h3>
+                <p>Este es un vendedor confiable con productos de alta calidad y excelente servicio al cliente. Ofrecemos garantía de satisfacción y envío gratuito.</p>
+            </div>
+        </div>
+
+        <div class="product-info">
+            <h1>Producto no disponible</h1>
+            <h2>Precio no disponible</h2>
+
+            <ul class="product-features">
+                <li>N/A</li>
+                <li>N/A</li>
+                <li>N/A</li>
+                <li>N/A</li>
+                <li>N/A</li>
+            </ul>
+
+            <button class="buy-now-button">Comprar ahora</button>
+
+            <div class="ui-vip-payment_methods">
+                <p class="ui-vip-payment_methods__title">Cuotas sin Tarjeta</p>
+                <div class="ui-pdp-payment-icon">
+                    <div class="ui-pdp-payment-icon__container">
+                        <div class="ui-pdp-payment-icon__size">
+                            <img src="https://http2.mlstatic.com/storage/logos-api-admin/0be92df0-84db-11ef-87c2-59ab971c22b5-m.svg" alt="Mercado Crédito">
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-pdp-payment-icon">
+                    <div class="ui-pdp-payment-icon__container">
+                        <div class="ui-pdp-payment-icon__size">
+                            <img decoding="async" src="https://http2.mlstatic.com/storage/logos-api-admin/a5f047d0-9be0-11ec-aad4-c3381f368aaf-m.svg" class="ui-pdp-image ui-pdp-payment-icon" alt="Visa">
+                        </div>
+                    </div>
+                    <div class="ui-pdp-payment-icon__container">
+                        <div class="ui-pdp-payment-icon__size">
+                            <img decoding="async" src="https://http2.mlstatic.com/storage/logos-api-admin/b4785730-c13f-11ee-b4b3-bb9a23b70639-m.svg" class="ui-pdp-image ui-pdp-payment-icon" alt="American Express">
+                        </div>
+                    </div>
+                    <div class="ui-pdp-payment-icon__container">
+                        <div class="ui-pdp-payment-icon__size">
+                            <img decoding="async" src="https://http2.mlstatic.com/storage/logos-api-admin/aa2b8f70-5c85-11ec-ae75-df2bef173be2-m.svg" class="ui-pdp-image ui-pdp-payment-icon" alt="Mastercard">
+                        </div>
+                    </div>
+                    <div class="ui-pdp-payment-icon__container">
+                        <div class="ui-pdp-payment-icon__size">
+                            <img decoding="async" src="https://http2.mlstatic.com/storage/logos-api-admin/ca059a50-0f95-11ea-bc46-0785c501feb7-m.svg" class="ui-pdp-image ui-pdp-payment-icon" alt="Naranja">
+                        </div>
+                    </div>
+                </div>
+                <p class="ui-pdp-family--REGULAR ui-vip-payment_methods__title">Tarjetas de débito</p>
+                <div class="ui-pdp-payment-icon">
+                    <div class="ui-pdp-payment-icon__container">
+                        <div class="ui-pdp-payment-icon__size">
+                            <img decoding="async" src="https://http2.mlstatic.com/storage/logos-api-admin/312238e0-571b-11e8-823a-758d95db88db-m.svg" class="ui-pdp-image ui-pdp-payment-icon" alt="Visa Débito">
+                        </div>
+                    </div>
+                    <div class="ui-pdp-payment-icon__container">
+                        <div class="ui-pdp-payment-icon__size">
+                            <img decoding="async" src="https://http2.mlstatic.com/storage/logos-api-admin/ce454480-445f-11eb-bf78-3b1ee7bf744c-m.svg" class="ui-pdp-image ui-pdp-payment-icon" alt="Maestro">
+                        </div>
+                    </div>
+                    <div class="ui-pdp-payment-icon__container">
+                        <div class="ui-pdp-payment-icon__size">
+                            <img decoding="async" src="https://http2.mlstatic.com/storage/logos-api-admin/cb0af1c0-f3be-11eb-8e0d-6f4af49bf82e-m.svg" class="ui-pdp-image ui-pdp-payment-icon" alt="Cabal Débito">
+                        </div>
+                    </div>
+                    <div class="ui-pdp-payment-icon__container">
+                        <div class="ui-pdp-payment-icon__size">
+                            <img decoding="async" src="https://http2.mlstatic.com/storage/logos-api-admin/157dce60-571b-11e8-95d8-631c1a9a92a9-m.svg" class="ui-pdp-image ui-pdp-payment-icon" alt="Mastercard Débito">
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+</body>
+</html>

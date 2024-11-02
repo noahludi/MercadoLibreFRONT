@@ -1,0 +1,272 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    margin: 0 auto;
+}
+
+.product-details-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px 30px;
+    background-color: white;
+    width: 60%;
+    margin: 20px auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    align-items: center;
+}
+
+.product-image {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-image img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.seller-description {
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    width: 90%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    max-width: 40%;
+    padding-left: 12%;
+}
+
+.product-info h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.product-info h2 {
+    font-size: 28px;
+    color: #3483fa;
+    margin-bottom: 20px;
+}
+
+.product-features {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+.product-features li {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.buy-now-button {
+    padding: 15px 30px;
+    background-color: #3483fa;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.buy-now-button:hover {
+    background-color: #2968c8;
+}
+
+.payment-methods {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.payment-methods img {
+    width: 50px;
+    height: auto;
+    transition: transform 0.3s;
+}
+
+.payment-methods img:hover {
+    transform: scale(1.1);
+}
+
+/* LOGOS METODOS DE PAGO */
+.ui-vip-payment_methods {
+    margin-top: 20px;
+}
+
+.ui-vip-payment_methods__title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.ui-pdp-payment-icon {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.ui-pdp-payment-icon__container {
+    display: inline-block;
+}
+
+.ui-pdp-payment-icon__size {
+    width: 50px;
+    height: 50px;
+}
+
+.ui-pdp-payment-icon__size img {
+    width: 100%;
+    height: auto;
+}
+
+/* NAV BAR ------------------------------------------------------------------- */
+header {
+    background-color: #494949;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.logo img {
+    width: 120px;
+}
+
+.search-bar {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-bar input {
+    width: 50%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.search-bar button {
+    background-color: #494949;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 10px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-bar button:hover {
+    background-color: #8f8f8f;
+}
+
+.search-bar button img.search-icon {
+    width: 24px;
+    height: 24px;
+}
+
+/* NAV LINKS */
+.nav-links {
+    display: flex;
+}
+
+.nav-links a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    color: #9b9b9b;
+}
+
+/* DROPDOWN */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    position: absolute;
+    right: 0;
+    background-color: #fff;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    z-index: 45;
+    border-radius: 5px;
+    margin-top: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.dropdown.show .dropdown-content {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.dropdown-content p {
+    margin: 0;
+    padding: 8px 16px;
+    color: #333;
+    font-size: 16px;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 10px 16px;
+    color: #3483fa;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+}
+
+/* Estilo para los enlaces con el id 'configButton' */
+.dropdown-content a#configButton {
+    display: block;
+    width: 80%;
+    padding: 10px 0;
+    color: #333;
+    text-align: left;
+    font-weight: normal;
+    background-color: transparent;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+.dropdown-content a#configButton:hover {
+    background-color: #f0f0f0;
+    color: #000;
+}
+
+.dropdown-content a:hover {
+    background-color: #e0e0e0;
+}
+
