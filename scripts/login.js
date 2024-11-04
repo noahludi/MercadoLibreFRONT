@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const registerLink = document.getElementById('registerLink');
     const additionalFields = document.getElementById('additionalFields');
     const submitButton = document.getElementById('submitButton');
-    const loginForm = document.querySelector("form");
+    const loginForm = document.getElementById("loginForm");
     let isRegisterClicked = false;
 
     // Muestra u oculta los campos adicionales para registro
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const password = document.getElementById("password").value;
 
         if (!username || !password) {
-            console.error("Usuario o contraseña no proporcionados.");
+            alert("Por favor, proporciona el usuario y la contraseña.");
             return;
         }
 
@@ -44,21 +44,30 @@ document.addEventListener('DOMContentLoaded', function() {
             const lastName = document.getElementById("lastname").value;
 
             if (!email || !dni || !firstName || !lastName) {
-                console.error("Campos de registro faltantes.");
+                alert("Por favor, completa todos los campos de registro.");
                 return;
             }
 
+            // Obtener el token de reCAPTCHA
+            const recaptchaToken = grecaptcha.getResponse();
+            if (!recaptchaToken) {
+                alert("Por favor, verifica el CAPTCHA.");
+                return;
+            }
+
+            // Crear datos de registro
             const registerData = {
                 username: username,
                 password: password,
                 email: email,
                 dni: dni,
                 firstName: firstName,
-                lastName: lastName
+                lastName: lastName,
+                recaptchaToken: recaptchaToken // Agregar el token de reCAPTCHA al JSON
             };
 
             try {
-                const response = await fetch("http://mercadoplus.somee.com/api/account/register", {
+                const registerResponse = await fetch("https://mercadoplus.somee.com/api/account/register", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -66,17 +75,20 @@ document.addEventListener('DOMContentLoaded', function() {
                     body: JSON.stringify(registerData)
                 });
 
-                if (response.ok) {
+                const registerResult = await registerResponse.json();
+
+                if (registerResponse.ok) {
                     alert("Registro exitoso.");
+                    window.location.href = "index.html"; // Redirigir después del registro exitoso
                 } else {
-                    const error = await response.json();
-                    alert("Error en el registro: " + (error.message || "Ocurrió un error en el registro."));
+                    alert("Error en el registro: " + (registerResult.message || "Ocurrió un error."));
                 }
             } catch (error) {
                 console.error("Error de conexión:", error);
                 alert("Error de conexión con el servidor.");
+            } finally {
+                grecaptcha.reset(); // Reiniciar el CAPTCHA después del envío
             }
-
         } else {
             // Proceso de Login
             const loginData = {
@@ -85,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
             };
 
             try {
-                const response = await fetch("http://mercadoplus.somee.com/api/account/login", {
+                const response = await fetch("https://mercadoplus.somee.com/api/account/login", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"

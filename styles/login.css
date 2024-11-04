@@ -129,4 +129,9 @@ input[type="text"], input[type="password"], input[type="email"] {
 .material-icons {
     font-size: inherit; /* Mantiene el tamaño del icono basado en el contenedor */
 }
+.captcha-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
 
