@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", async function() {
     if (token) {
         try {
             // Obtener información del usuario
-            const userResponse = await fetch("http://mercadoplus.somee.com/api/account/getUserInfo", {
+            const userResponse = await fetch("https://mercadoplus.somee.com/api/account/getUserInfo", {
                 method: "GET",
                 headers: {
                     "Authorization": "Bearer " + token
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", async function() {
                 // Si el usuario tiene una foto de perfil, obtener el ID y cargar la imagen
                 const profilePhotoId = userData.profilePhotoId;
                 if (profilePhotoId) {
-                    const photoResponse = await fetch(`http://mercadoplus.somee.com/api/photos/${profilePhotoId}`, {
+                    const photoResponse = await fetch(`https://mercadoplus.somee.com/api/photos/${profilePhotoId}`, {
                         method: "GET",
                         headers: {
                             "Authorization": "Bearer " + token

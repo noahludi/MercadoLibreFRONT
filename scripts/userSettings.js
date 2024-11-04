@@ -16,7 +16,7 @@ async function fetchUserInfo() {
     }
 
     try {
-        const response = await fetch("http://mercadoplus.somee.com/api/account/getUserInfo", {
+        const response = await fetch("https://mercadoplus.somee.com/api/account/getUserInfo", {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`,
@@ -57,7 +57,7 @@ async function downloadProfilePhoto(photoId) {
     const token = localStorage.getItem("token");
 
     try {
-        const response = await fetch(`http://mercadoplus.somee.com/api/photos/${photoId}`, {
+        const response = await fetch(`https://mercadoplus.somee.com/api/photos/${photoId}`, {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`,
@@ -108,7 +108,7 @@ async function uploadPhotoToAPI(base64Image) {
     const token = localStorage.getItem("token");
 
     try {
-        const response = await fetch("http://mercadoplus.somee.com/api/photos", {
+        const response = await fetch("https://mercadoplus.somee.com/api/photos", {
             method: "POST",
             headers: {
                 "Authorization": `Bearer ${token}`,
@@ -169,7 +169,7 @@ async function confirmChanges() {
     console.log("Datos a actualizar enviados:", requestBody);
 
     try {
-        const response = await fetch("http://mercadoplus.somee.com/api/account/update", {
+        const response = await fetch("https://mercadoplus.somee.com/api/account/update", {
             method: "PUT",
             headers: {
                 "Authorization": `Bearer ${token}`,
