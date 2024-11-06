@@ -59,6 +59,7 @@ header {
 
 .nav-links {
     display: flex;
+    align-items: center;
 }
 
 .nav-links a {
@@ -182,59 +183,106 @@ footer {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    text-align: center;
 }
 
-/* Contenedor del formulario */
-.form-container {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 10px;
+/* Ajuste para centrar la imagen de previsualización */
+.photo-preview {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
 
-/* Campos del formulario */
-.sell-product-section label {
-    font-weight: bold;
-    margin-top: 15px;
-    margin-bottom: 8px;
-    color: #333;
-}
-
-.sell-product-section input[type="text"],
-.sell-product-section input[type="number"],
-.sell-product-section select,
-.sell-product-section textarea {
+.photo-preview-item {
+    margin-top: 10%;
     width: 100%;
-    padding: 10px;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+/* Campos del formulario - Estilos específicos */
+#title {
+    width: 95%;
+    padding: 12px;
     border: 1px solid #ccc;
     border-radius: 5px;
     margin-bottom: 15px;
     font-size: 16px;
 }
 
-/* Márgenes específicos para ciertos campos */
-.sell-product-section input[type="text"]#title,
-.sell-product-section input[type="text"]#description,
-.sell-product-section input[type="number"]#price {
-    margin-right: 10px; /* Añade espacio a la derecha */
-}
-
-/* Campo reducido para Stock */
-.sell-product-section input[type="number"]#stock {
-    width: 50%; /* Ancho más pequeño solo para stock */
-    margin-right: 10px; /* Añade espacio a la derecha */
-}
-
-/* Textarea */
-.sell-product-section textarea {
+#description {
+    width: 95%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 16px;
     resize: vertical;
     height: 100px;
+}
+
+#price {
+    width: 95%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+#idCategory {
+    width: 99.8%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+#idProductState {
+    width: 99.8%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+#idPublicationState {
+    width: 99.8%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+#idColor {
+    width: 99.8%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+#stock {
+    width: 10%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    text-align: center;
 }
 
 /* Botón de envío */
 .sell-product-section button {
     width: 100%;
-    padding: 15px;
-    font-size: 18px;
+    padding: 12px;
+    font-size: 16px;
     margin-top: 20px;
     border-radius: 5px;
     background-color: #3483fa;

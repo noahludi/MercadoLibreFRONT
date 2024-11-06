@@ -4,45 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" />
+    <title>Publicar Producto</title>
     <link rel="stylesheet" href="styles/sellProducts.css">
-    <title>Publicar Producto - Mercado Libre</title>
     <script defer src="scripts/sellProducts.js"></script>
 </head>
 <body>
-
     <!-- Barra de navegación -->
-    <header>
-        <div class="logo">
-            <a href="index.html">
-                <img src="resources/Logo.png" alt="Logo">
-            </a>            
-        </div>
-        <div class="search-bar">
-            <input type="text" placeholder="Buscar productos, marcas y más...">
-            <button><img src="resources/search.png" class="search-icon" alt="Buscar"/></button>
-        </div>
-        <div class="nav-links">
-            <a href="#"><span class="material-symbols-outlined">home</span></a>
-            <a href="cart.html"><span class="material-symbols-outlined">shopping_cart</span></a>
-            <div class="dropdown">
-                <a href="#" id="accountIcon"><span class="material-symbols-outlined">account_circle</span></a>
-                <div class="dropdown-content">
-                    <img id="profilePicture" src="" alt="Foto de perfil" style="width: 60px; height: 60px; border-radius: 50%; display: none;"/>
-                    <p id="usernameDisplay">Bienvenido, Invitado</p>
-                    <a id="configButton" href="userSettings.html">Configuración</a>
-                    <a id="configButton" href="userHistory.html">Historial</a>
-                    <a id="configButton" href="userQuestions.html">Preguntas</a>
-                    <a id="configButton" href="userOpinions.html">Opiniones</a>
-                    <a href="login.html">Ingresar</a>
-                </div>
+<header>
+    <div class="logo">
+        <a href="index.html">
+            <img src="resources/Logo.png" alt="Logo">
+        </a>            
+    </div>
+    <div class="search-bar">
+        <input type="text" placeholder="Buscar productos, marcas y más...">
+        <button><img src="resources/search.png" class="search-icon" alt="Buscar"/></button>
+    </div>
+    <div class="nav-links">
+        <a href="index.html"><span class="material-symbols-outlined">home</span></a>
+        <a href="cart.html"><span class="material-symbols-outlined">shopping_cart</span></a>
+        <a href="sellProducts.html"><span class="material-symbols-outlined">sell</span></a> <!-- Icono para vender -->
+        <div class="dropdown">
+            <a href="#" id="accountIcon"><span class="material-symbols-outlined">account_circle</span></a>
+            <div class="dropdown-content">
+                <img id="profilePicture" src="" alt="Foto de perfil" style="width: 60px; height: 60px; border-radius: 50%; display: none;"/>
+                <p id="usernameDisplay">Bienvenido, Invitado</p>
+                <a id="configButton" href="userSettings.html">Configuración</a>
+                <a id="configButton" href="userHistory.html">Historial</a>
+                <a id="configButton" href="userQuestions.html">Preguntas</a>
+                <a id="configButton" href="userOpinions.html">Opiniones</a>
+                <a href="login.html">Ingresar</a>
             </div>
         </div>
-    </header>
+    </div>
+</header> 
+
 
     <!-- Formulario para publicar un producto -->
     <section class="sell-product-section">
         <h2>Publicar un Producto</h2>
-        <form id="sellProductForm" action="/api/publications" method="post">
+        <!-- Selector de imagen -->
+        <div class="image-selector">
+            <label for="fileInput">Selecciona imágenes del producto</label>
+            <input type="file" id="fileInput" accept="image/*" multiple>
+            <div id="photoPreviewContainer" class="photo-preview">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaIuyhIU_4sTcggWqJptRxBJ6o4YnqXqTr3A&s" alt="Previsualización de la imagen" class="photo-preview-item">
+            </div>
+        </div>
+        
+        <form id="sellProductForm">
             <label for="title">Título del Producto:</label>
             <input type="text" id="title" name="title" maxlength="100" required>
 
@@ -52,31 +62,27 @@
             <label for="price">Precio:</label>
             <input type="number" id="price" name="price" min="0.01" step="0.01" required>
 
+            <label for="idCategory">Categoría:</label>
+            <select id="idCategory" name="idCategory" required></select>
+
             <label for="idProductState">Estado del Producto:</label>
-            <select id="idProductState" name="idProductState" required>
-                <!-- Opciones dinámicas cargadas desde la API -->
-            </select>
+            <select id="idProductState" name="idProductState" required></select>
 
             <label for="idPublicationState">Estado de Publicación:</label>
-            <select id="idPublicationState" name="idPublicationState" required>
-                <!-- Opciones dinámicas cargadas desde la API -->
-            </select>
+            <select id="idPublicationState" name="idPublicationState" required></select>
 
             <label for="idColor">Color:</label>
-            <select id="idColor" name="idColor">
-                <!-- Opciones dinámicas cargadas desde la API -->
-            </select>
+            <select id="idColor" name="idColor"></select>
 
             <label for="stock">Stock:</label>
-            <input type="number" id="stock" name="stock" min="0" max="2147483647" required>
+            <input type="number" id="stock" name="stock" min="1" max="999" required>
 
             <button type="submit">Publicar Producto</button>
         </form>
     </section>
 
     <footer>
-        <p>&copy; 2024 Mercado Negro</p>
+        <p>&copy; 2024 Mercado Libre</p>
     </footer>
-
 </body>
 </html>
