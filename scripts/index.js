@@ -38,11 +38,11 @@ document.addEventListener("DOMContentLoaded", async function() {
                         const profileImage = document.createElement("img");
                         profileImage.src = `data:image/jpeg;base64,${imageBase64}`;
                         profileImage.alt = "Foto de perfil";
-                        profileImage.style.width = "80px";  // Tamaño de la imagen
+                        profileImage.style.width = "80px";
                         profileImage.style.height = "80px";
                         profileImage.style.borderRadius = "50%";
                         profileImage.style.display = "block";
-                        profileImage.style.margin = "0 auto 10px"; // Centrado y margen inferior
+                        profileImage.style.margin = "0 auto 10px";
 
                         // Insertar la imagen en el dropdown
                         const dropdownContent = document.querySelector(".dropdown-content");
@@ -92,20 +92,18 @@ document.addEventListener("DOMContentLoaded", async function() {
         }
     };
 
-    // Carrusel de productos
+    // Carrusel de productos destacados
     let currentIndex = 0;
     const productList = document.querySelector('.product-list');
     const products = document.querySelectorAll('.product');
-    const totalProducts = products.length;
     const productWidth = products[0].clientWidth;
 
-    // Avanza en el carrusel de productos
     document.querySelector('.carousel-next').addEventListener('click', () => {
         currentIndex++;
         productList.style.transition = 'transform 0.5s ease-in-out';
         productList.style.transform = `translateX(${-currentIndex * productWidth}px)`;
 
-        if (currentIndex >= totalProducts) {
+        if (currentIndex >= products.length) {
             setTimeout(() => {
                 productList.style.transition = 'none';
                 currentIndex = 0;
@@ -114,11 +112,10 @@ document.addEventListener("DOMContentLoaded", async function() {
         }
     });
 
-    // Retrocede en el carrusel de productos
     document.querySelector('.carousel-prev').addEventListener('click', () => {
         currentIndex--;
         if (currentIndex < 0) {
-            currentIndex = totalProducts - 1;
+            currentIndex = products.length - 1;
             productList.style.transition = 'none';
             productList.style.transform = `translateX(${-currentIndex * productWidth}px)`;
         }
@@ -135,7 +132,6 @@ document.addEventListener("DOMContentLoaded", async function() {
     const ads = document.querySelectorAll('.ad-images img');
     const totalAds = ads.length;
 
-    // Avanza automáticamente en el carrusel de publicidad cada 5 segundos
     setInterval(() => {
         currentAdIndex++;
         if (currentAdIndex >= totalAds) {
@@ -145,7 +141,6 @@ document.addEventListener("DOMContentLoaded", async function() {
         adList.style.transform = `translateX(${-currentAdIndex * ads[0].clientWidth}px)`;
     }, 5000);
 
-    // Control manual de publicidad
     document.querySelector('.carousel-next-ad').addEventListener('click', () => {
         currentAdIndex++;
         if (currentAdIndex >= totalAds) {

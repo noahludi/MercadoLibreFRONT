@@ -1,0 +1,248 @@
+/* GLOBAL ------------------------------------------------------------------- */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #000000;
+}
+
+/* NAV BAR ------------------------------------------------------------------- */
+header {
+    background-color: #494949;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.logo img {
+    width: 120px;
+}
+
+.search-bar {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-bar input {
+    width: 50%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.search-bar button {
+    background-color: #494949;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 10px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-bar button:hover {
+    background-color: #8f8f8f;
+}
+
+.search-bar button img.search-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.nav-links {
+    display: flex;
+}
+
+.nav-links a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    color: #9b9b9b;
+}
+
+/* DROPDOWN ---------------------------------------------------------- */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    position: absolute;
+    right: 0;
+    background-color: #fff;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    z-index: 45;
+    border-radius: 5px;
+    margin-top: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.dropdown.show .dropdown-content {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.dropdown-content p {
+    margin: 0;
+    padding: 8px 16px;
+    color: #333;
+    font-size: 16px;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 10px 16px;
+    color: #3483fa;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+}
+
+.dropdown-content a#configButton {
+    display: block;
+    width: 80%;
+    padding: 10px 0;
+    color: #333;
+    text-align: left;
+    font-weight: normal;
+    background-color: transparent;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+.dropdown-content a#configButton:hover {
+    background-color: #f0f0f0;
+    color: #000;
+}
+
+.dropdown-content a:hover {
+    background-color: #e0e0e0;
+}
+
+/* FOOTER ------------------------------------------------------------------- */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* FORMULARIO DE PUBLICACIÓN ------------------------------------------------ */
+.sell-product-section {
+    background-color: #fff;
+    width: 30%;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Encabezado del formulario */
+.sell-product-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+/* Selector de imagen */
+.image-selector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.image-selector label {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.image-selector input[type="file"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Contenedor del formulario */
+.form-container {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Campos del formulario */
+.sell-product-section label {
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.sell-product-section input[type="text"],
+.sell-product-section input[type="number"],
+.sell-product-section select,
+.sell-product-section textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+/* Márgenes específicos para ciertos campos */
+.sell-product-section input[type="text"]#title,
+.sell-product-section input[type="text"]#description,
+.sell-product-section input[type="number"]#price {
+    margin-right: 10px; /* Añade espacio a la derecha */
+}
+
+/* Campo reducido para Stock */
+.sell-product-section input[type="number"]#stock {
+    width: 50%; /* Ancho más pequeño solo para stock */
+    margin-right: 10px; /* Añade espacio a la derecha */
+}
+
+/* Textarea */
+.sell-product-section textarea {
+    resize: vertical;
+    height: 100px;
+}
+
+/* Botón de envío */
+.sell-product-section button {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    margin-top: 20px;
+    border-radius: 5px;
+    background-color: #3483fa;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.sell-product-section button:hover {
+    background-color: #2968c8;
+}
