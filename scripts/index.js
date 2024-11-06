@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     const featuredProductsContainer = document.querySelector(".product-list");
     const electronicsContainer = document.querySelector(".electronics-list");
     const fashionContainer = document.querySelector(".fashion-list");
-    const instrumentsContainer = document.querySelector(".instruments-list"); // Nuevo contenedor para instrumentos
+    const instrumentsContainer = document.querySelector(".instruments-list");
 
     // Verificar si el usuario está autenticado
     if (!token) {
@@ -43,19 +43,10 @@ document.addEventListener("DOMContentLoaded", async function () {
                     const photoData = await photoResponse.json();
                     const imageBase64 = photoData.imageData;
 
-                    // Crear elemento de imagen y mostrar en el dropdown
-                    const profileImage = document.createElement("img");
+                    // Mostrar la imagen en el dropdown
+                    const profileImage = document.getElementById("profilePicture");
                     profileImage.src = `data:image/jpeg;base64,${imageBase64}`;
-                    profileImage.alt = "Foto de perfil";
-                    profileImage.style.width = "80px";
-                    profileImage.style.height = "80px";
-                    profileImage.style.borderRadius = "50%";
                     profileImage.style.display = "block";
-                    profileImage.style.margin = "0 auto 10px";
-
-                    // Insertar la imagen en el dropdown
-                    const dropdownContent = document.querySelector(".dropdown-content");
-                    dropdownContent.insertBefore(profileImage, dropdownContent.firstChild);
 
                     console.log("Foto de perfil mostrada correctamente.");
                 } else {
@@ -96,6 +87,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     function createProductElement(product) {
         const productDiv = document.createElement("div");
         productDiv.classList.add("product");
+        productDiv.setAttribute("data-product-id", product.id); // Asignar ID de publicación
 
         productDiv.innerHTML = `
             <img src="data:image/jpeg;base64,${product.photos[0]?.imageData || ''}" alt="${product.title}" />
@@ -103,6 +95,12 @@ document.addEventListener("DOMContentLoaded", async function () {
             <span>$${product.price}</span>
             <a href="#"><img src="resources/addToCart.png" alt="Comprar"></a>
         `;
+
+        // Añadir evento de clic para redirigir a product-details.html con el ID del producto
+        productDiv.addEventListener("click", function () {
+            const productId = this.getAttribute("data-product-id");
+            window.location.href = `product-details.html?productId=${productId}`;
+        });
 
         return productDiv;
     }
@@ -152,7 +150,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 categories.forEach(category => {
                     const categoryNameLower = category.name.toLowerCase();
 
-                    if (categoryNameLower === "tecnología" || categoryNameLower === "tecnologia") {
+                    if (categoryNameLower === "tecnología" || categoryNameLower === "tecnologia" || categoryNameLower === "electrónica" || categoryNameLower === "electronica") {
                         loadProductsByCategory(category.name, electronicsContainer);
                     }
                     if (categoryNameLower === "moda") {
