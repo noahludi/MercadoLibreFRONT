@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 
     // Llamadas para cargar las opciones en los selectores
-    await loadOptions("categories", "idCategoria"); // Cargar categorías
+    await loadOptions("categories", "idCategory"); // Cargar categorías
     await loadOptions("product-states", "idProductState");
     await loadOptions("publication-states", "idPublicationState");
     await loadOptions("colors", "idColor");
@@ -141,7 +141,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             title: document.getElementById("title") ? document.getElementById("title").value : "",
             description: document.getElementById("description") ? document.getElementById("description").value : "",
             price: document.getElementById("price") ? parseFloat(document.getElementById("price").value) : 0,
-            idCategoria: document.getElementById("idCategoria") ? parseInt(document.getElementById("idCategoria").value) : 0,
+            idCategoria: document.getElementById("idCategory") ? parseInt(document.getElementById("idCategory").value) : 0,
             idProductState: document.getElementById("idProductState") ? parseInt(document.getElementById("idProductState").value) : 0,
             idPublicationState: document.getElementById("idPublicationState") ? parseInt(document.getElementById("idPublicationState").value) : 0,
             idColor: document.getElementById("idColor") ? parseInt(document.getElementById("idColor").value) : 0,

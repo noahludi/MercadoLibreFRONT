@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- Metadatos y enlaces -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" />
-    <link rel="stylesheet" href="styles/styles.css">
     <title>ML - Mercado Libre</title>
-    <script src="/scripts/index.js"></script>
+    <link rel="stylesheet" href="styles/styles.css">
+    <!-- Enlace a Google Fonts para los íconos -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap">
 </head>
 <body>
     <!-- Barra de navegación -->
@@ -21,8 +22,9 @@
             <button><img src="resources/search.png" class="search-icon" alt="Buscar"/></button>
         </div>
         <div class="nav-links">
-            <a href="#"><span class="material-symbols-outlined">home</span></a>
+            <a href="index.html"><span class="material-symbols-outlined">home</span></a>
             <a href="cart.html"><span class="material-symbols-outlined">shopping_cart</span></a>
+            <a href="sellProducts.html"><span class="material-symbols-outlined">sell</span></a> <!-- Icono para vender -->
             <div class="dropdown">
                 <a href="#" id="accountIcon"><span class="material-symbols-outlined">account_circle</span></a>
                 <div class="dropdown-content">
@@ -36,7 +38,7 @@
                 </div>
             </div>
         </div>
-    </header>    
+    </header> 
 
     <!-- Carrusel de Publicidad -->
     <section class="carousel-ad">
@@ -57,6 +59,7 @@
         <div class="category-list">
             <a href="#electronica">Electrónica</a>
             <a href="#moda">Moda</a>
+            <a href="#instrumentos">Instrumentos</a>
             <a href="#">Hogar</a>
             <a href="#">Deportes</a>
             <a href="#">Automotriz</a>
@@ -70,12 +73,7 @@
         <div class="carousel-container">
             <button class="carousel-prev">&#10094;</button>
             <div class="product-list">
-                <div class="product">
-                    <img src="resources/24ULTRA.jpg" alt="Producto 1">
-                    <p>Producto 1</p>
-                    <span>$10,000</span>
-                    <a href="#"><img src="resources/addToCart.png" alt="Comprar"></a>
-                </div>
+                <!-- Los productos destacados se cargarán aquí dinámicamente -->
             </div>
             <button class="carousel-next">&#10095;</button>
         </div>
@@ -85,12 +83,7 @@
     <section id="electronica" class="electronics">
         <h2>Electrónica</h2>
         <div class="electronics-list">
-            <div class="product">
-                <img src="resources/24ULTRA.jpg" alt="Samsung Galaxy S24 Ultra">
-                <p>Samsung Galaxy S24 Ultra</p>
-                <span>$2.599.999</span>
-                <a href="#"><img src="resources/addToCart.png" alt="Comprar"></a>
-            </div>
+            <!-- Los productos de electrónica se cargarán aquí dinámicamente -->
         </div>
     </section>
 
@@ -98,17 +91,23 @@
     <section id="moda" class="fashion">
         <h2>Moda</h2>
         <div class="fashion-list">
-            <div class="product">
-                <img src="resources/chombaLacoste.jpg" alt="Chomba Lacoste Hombre">
-                <p>Chomba Remera Lacoste Hombre</p>
-                <span>$79.999</span>
-                <a href="#"><img src="resources/addToCart.png" alt="Comprar"></a>
-            </div>
+            <!-- Los productos de moda se cargarán aquí dinámicamente -->
+        </div>
+    </section>
+
+    <!-- Sección de Instrumentos -->
+    <section id="instrumentos" class="instruments">
+        <h2>Instrumentos</h2>
+        <div class="instruments-list">
+            <!-- Los productos de instrumentos se cargarán aquí dinámicamente -->
         </div>
     </section>
     
     <footer>
         <p>&copy; 2024 Mercado Negro</p>
     </footer>
+
+    <!-- Coloca el script al final del body para asegurar que el DOM esté cargado -->
+    <script src="scripts/index.js"></script>
 </body>
 </html>
