@@ -9,75 +9,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         return;
     }
 
-    // Obtener información del usuario
-    try {
-        const userResponse = await fetch(`${apiUrl}/account/getUserInfo`, {
-            method: "GET",
-            headers: {
-                "Authorization": "Bearer " + token
-            }
-        });
-
-        if (userResponse.ok) {
-            const userData = await userResponse.json();
-
-            // Configurar el texto de bienvenida
-            const usernameDisplay = document.getElementById("usernameDisplay");
-            usernameDisplay.textContent = "Hola, " + userData.firstName + "!";
-            usernameDisplay.style.textAlign = "center";
-            usernameDisplay.style.fontWeight = "bold";
-
-            // Si el usuario tiene una foto de perfil, obtener el ID y cargar la imagen
-            const profilePhotoId = userData.profilePhotoId;
-            if (profilePhotoId) {
-                const photoResponse = await fetch(`${apiUrl}/photos/${profilePhotoId}`, {
-                    method: "GET",
-                    headers: {
-                        "Authorization": "Bearer " + token
-                    }
-                });
-
-                if (photoResponse.ok) {
-                    const photoData = await photoResponse.json();
-                    const imageBase64 = photoData.imageData;
-
-                    // Crear elemento de imagen y mostrar en el dropdown
-                    const profileImage = document.createElement("img");
-                    profileImage.src = `data:image/jpeg;base64,${imageBase64}`;
-                    profileImage.alt = "Foto de perfil";
-                    profileImage.style.width = "80px";
-                    profileImage.style.height = "80px";
-                    profileImage.style.borderRadius = "50%";
-                    profileImage.style.display = "block";
-                    profileImage.style.margin = "0 auto 10px";
-
-                    // Insertar la imagen en el dropdown
-                    const dropdownContent = document.querySelector(".dropdown-content");
-                    dropdownContent.insertBefore(profileImage, dropdownContent.firstChild);
-
-                    console.log("Foto de perfil mostrada correctamente.");
-                } else {
-                    console.error("Error al cargar la imagen de perfil");
-                }
-            }
-
-            // Cambiar el enlace de login a "Cerrar Sesión"
-            const loginLink = document.querySelector(".dropdown-content a[href='login.html']");
-            if (loginLink) {
-                loginLink.textContent = "Cerrar Sesión";
-                loginLink.href = "#";
-                loginLink.addEventListener("click", () => {
-                    localStorage.removeItem("token");
-                    window.location.reload();
-                });
-            }
-        } else {
-            console.error("Error al cargar datos del usuario");
-        }
-    } catch (error) {
-        console.error("Error de conexión:", error);
-    }
-
     // Función para cargar opciones dinámicas en los selectores desde la API
     async function loadOptions(endpoint, selectId) {
         try {
@@ -173,16 +104,5 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
     });
 
-    // Lógica del dropdown de cuenta
-    document.getElementById("accountIcon").addEventListener("click", function (event) {
-        event.preventDefault();
-        document.querySelector(".dropdown").classList.toggle("show");
-    });
-
-    // Cerrar dropdown al hacer clic fuera
-    window.onclick = function (event) {
-        if (!event.target.closest(".dropdown") && !event.target.matches(".material-symbols-outlined")) {
-            document.querySelector(".dropdown").classList.remove("show");
-        }
-    };
+    // Nota: La lógica del navbar ha sido eliminada, ya que ahora se maneja en navbar.js
 });
