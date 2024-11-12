@@ -6,7 +6,7 @@ body {
     background-color: #f5f5f5;
 }
 
-/* NAV BAR ------------------------------------------------------------------- */
+/* NAV BAR */
 header {
     background-color: #494949;
     display: flex;
@@ -59,6 +59,7 @@ header {
 /* NAV LINKS */
 .nav-links {
     display: flex;
+    align-items: center;
 }
 
 .nav-links a {
@@ -83,7 +84,7 @@ header {
     right: 0;
     background-color: #fff;
     min-width: 200px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     padding: 10px;
     z-index: 45;
     border-radius: 5px;
@@ -103,6 +104,7 @@ header {
     padding: 8px 16px;
     color: #333;
     font-size: 16px;
+    text-align: center;
 }
 
 .dropdown-content a {
@@ -114,28 +116,31 @@ header {
     font-weight: bold;
     border-radius: 5px;
     background-color: #f0f0f0;
+    margin-bottom: 5px;
 }
 
-/* Estilo para los enlaces con el id 'configButton' */
 .dropdown-content a#configButton {
-    display: block;
-    width: 80%;
-    padding: 10px 0;
     color: #333;
-    text-align: left;
-    font-weight: normal;
     background-color: transparent;
-    border-radius: 5px;
-    transition: background-color 0.2s;
+    font-weight: normal;
+    text-align: left;
 }
 
 .dropdown-content a#configButton:hover {
     background-color: #f0f0f0;
-    color: #000;
 }
 
 .dropdown-content a:hover {
     background-color: #e0e0e0;
+}
+
+/* Imagen de perfil */
+#profilePicture {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: none;
+    margin: 0 auto 10px;
 }
 
 /* Carrito de Compras */
@@ -195,11 +200,28 @@ header {
     font-size: 16px;
 }
 
+.item-details label {
+    margin-right: 10px;
+}
+
 .item-details input {
     width: 60px;
     padding: 5px;
     border: 1px solid #cccccc;
     border-radius: 5px;
+}
+
+.remove-item {
+    background-color: transparent;
+    border: none;
+    color: #ff0000;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.remove-item:hover {
+    text-decoration: underline;
 }
 
 /* Resumen del pedido */

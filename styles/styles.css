@@ -278,6 +278,7 @@ header {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
+    position: relative; /* Para posicionar el botón "Agregar al carrito" */
 }
 
 .product:hover {
@@ -296,29 +297,26 @@ header {
     margin: 10px 0;
 }
 
-.product a {
-    display: inline-block;
-    width: 50px;
-    height: 50px;
-    background-color: #f0f0f0;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 50px;
-    border: 2px solid #cccccc;
-}
-
-.product a img {
-    width: 24px;
-    height: 24px;
-    object-fit: contain;
-    vertical-align: middle;
-}
-
 .product span {
     font-size: 20px;
     color: #3483fa;
     display: block;
     margin: 10px 0;
+}
+
+/* Botón "Agregar al carrito" */
+.product .add-to-cart-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.product .add-to-cart-button img {
+    width: 24px;
+    height: 24px;
 }
 
 /* Botones de navegación */
@@ -381,6 +379,7 @@ header {
     transition: transform 0.3s ease;
     width: 90%;
     height: auto;
+    position: relative; /* Para posicionar el botón "Agregar al carrito" */
 }
 
 .electronics-list .product img {
@@ -399,24 +398,6 @@ header {
     margin: 10px 0;
 }
 
-.electronics-list .product a {
-    display: inline-block;
-    width: 45px;
-    height: 45px;
-    background-color: #f0f0f0;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 45px;
-    border: 2px solid #cccccc;
-}
-
-.electronics-list .product a img {
-    width: 20px;
-    height: 20px;
-    object-fit: contain;
-    vertical-align: middle;
-}
-
 .electronics-list .product span {
     font-size: 18px;
     color: #3483fa;
@@ -424,8 +405,22 @@ header {
     margin: 10px 0;
 }
 
-/* MODA --------------------------------------------------------------------- */
+/* Botón "Agregar al carrito" para Electrónica */
+.electronics-list .product .add-to-cart-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
 
+.electronics-list .product .add-to-cart-button img {
+    width: 24px;
+    height: 24px;
+}
+
+/* MODA --------------------------------------------------------------------- */
 .fashion {
     padding: 20px;
     background-color: #fff;
@@ -457,6 +452,7 @@ header {
     transition: transform 0.3s ease;
     width: 90%;
     height: auto;
+    position: relative; /* Para posicionar el botón "Agregar al carrito" */
 }
 
 .fashion-list .product img {
@@ -475,29 +471,26 @@ header {
     margin: 10px 0;
 }
 
-.fashion-list .product a {
-    display: inline-block;
-    width: 45px;
-    height: 45px;
-    background-color: #f0f0f0;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 45px;
-    border: 2px solid #cccccc;
-}
-
-.fashion-list .product a img {
-    width: 20px;
-    height: 20px;
-    object-fit: contain;
-    vertical-align: middle;
-}
-
 .fashion-list .product span {
     font-size: 18px;
     color: #3483fa;
     display: block;
     margin: 10px 0;
+}
+
+/* Botón "Agregar al carrito" para Moda */
+.fashion-list .product .add-to-cart-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.fashion-list .product .add-to-cart-button img {
+    width: 24px;
+    height: 24px;
 }
 
 /* Instrumentos ------------------------------------------------------------------- */
@@ -532,6 +525,7 @@ header {
     transition: transform 0.3s ease;
     width: 90%;
     height: auto;
+    position: relative; /* Para posicionar el botón "Agregar al carrito" */
 }
 
 .instruments-list .product img {
@@ -550,29 +544,26 @@ header {
     margin: 10px 0;
 }
 
-.instruments-list .product a {
-    display: inline-block;
-    width: 45px;
-    height: 45px;
-    background-color: #f0f0f0;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 45px;
-    border: 2px solid #cccccc;
-}
-
-.instruments-list .product a img {
-    width: 20px;
-    height: 20px;
-    object-fit: contain;
-    vertical-align: middle;
-}
-
 .instruments-list .product span {
     font-size: 18px;
     color: #3483fa;
     display: block;
     margin: 10px 0;
+}
+
+/* Botón "Agregar al carrito" para Instrumentos */
+.instruments-list .product .add-to-cart-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.instruments-list .product .add-to-cart-button img {
+    width: 24px;
+    height: 24px;
 }
 
 /* FOOTER ------------------------------------------------------------------- */

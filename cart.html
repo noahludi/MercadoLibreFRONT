@@ -2,80 +2,33 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" />
-    <link rel="stylesheet" href="styles/cart.css">
-    <script src="scripts/cart.js"></script>
     <title>Carrito de Compras</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Iconos de Material Symbols -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <!-- Estilos CSS -->
+    <link rel="stylesheet" href="styles/cart.css">
 </head>
 <body>
-
-    <!-- Barra de navegación -->
-    <header>
-        <div class="logo">
-            <a href="index.html">
-                <img src="resources/logo.png" alt="Logo">
-            </a>            
-        </div>
-        <div class="search-bar">
-            <input type="text" placeholder="Buscar productos, marcas y más...">
-            <button><img src="resources/search.png" class="search-icon" alt="Buscar"/></button> <!-- Icono de búsqueda -->
-        </div>
-        <div class="nav-links">
-            <a href="#"><span class="material-symbols-outlined">home</span></a>
-            <a href="cart.html"><span class="material-symbols-outlined">shopping_cart</span></a>
-            <div class="dropdown">
-                <a href="#" id="accountIcon"><span class="material-symbols-outlined">account_circle</span></a>
-                <div class="dropdown-content">
-                    <img id="profilePicture" src="" alt="Foto de perfil" style="width: 60px; height: 60px; border-radius: 50%; display: none; margin: 0 auto 10px;"/>
-                    <p id="usernameDisplay">Bienvenido, Invitado</p>
-                    <a id="configButton" href="userSettings.html">Configuración</a>
-                    <a id="configButton" href="userHistory.html">Historial</a>
-                    <a id="configButton" href="userQuestions.html">Preguntas</a>
-                    <a id="configButton" href="userOpinions.html">Opiniones</a>
-                    <a href="login.html">Ingresar</a>
-                </div>
-                                
-            </div>
-        </div>
-    </header>
 
     <!-- Sección principal del carrito -->
     <div class="cart-container">
         <!-- Artículos del carrito -->
         <div class="cart-items">
-            <h2>Carrito de Compras</h2>
-            <div class="cart-item">
-                <img src="resources/product1.jpg" alt="Producto 1">
-                <div class="item-details">
-                    <p>Producto 1</p>
-                    <p>Precio: $10,000</p>
-                    <label>Cantidad:</label>
-                    <input type="number" value="1" min="1">
-                </div>
-            </div>
-            <div class="cart-item">
-                <img src="resources/product2.jpg" alt="Producto 2">
-                <div class="item-details">
-                    <p>Producto 2</p>
-                    <p>Precio: $15,000</p>
-                    <label>Cantidad:</label>
-                    <input type="number" value="2" min="1">
-                </div>
-            </div>
+            <!-- Los artículos del carrito se insertarán aquí mediante JavaScript -->
         </div>
 
         <!-- Resumen del pedido -->
         <div class="cart-summary">
             <h2>Resumen del Pedido</h2>
             <div class="summary-details">
-                <p>Subtotal: $40,000</p>
-                <p>Impuestos: $5,000</p>
-                <p>Total: $45,000</p>
-                <button class="pay-now-button">Pagar ahora</button>
+                <!-- Los detalles del resumen se insertarán aquí mediante JavaScript -->
             </div>
         </div>
     </div>
 
+    <!-- Scripts -->
+    <script src="scripts/navbar.js"></script>
+    <script src="scripts/cart.js"></script>
 </body>
 </html>

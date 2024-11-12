@@ -16,16 +16,58 @@ document.addEventListener("DOMContentLoaded", async function () {
             <img src="data:image/jpeg;base64,${product.photos[0]?.imageData || ''}" alt="${product.title}" />
             <p>${product.title}</p>
             <span>$${product.price}</span>
-            <a href="#"><img src="resources/addToCart.png" alt="Comprar"></a>
+            <button class="add-to-cart-button">
+                <img src="resources/addToCart.png" alt="Agregar al carrito">
+            </button>
         `;
 
         // Añadir evento de clic para redirigir a product-details.html con el ID del producto
-        productDiv.addEventListener("click", function () {
-            const productId = this.getAttribute("data-product-id");
+        productDiv.querySelector("img").addEventListener("click", function (event) {
+            event.stopPropagation();
+            const productId = productDiv.getAttribute("data-product-id");
             window.location.href = `product-details.html?productId=${productId}`;
         });
 
+        // Evento para agregar al carrito
+        const addToCartButton = productDiv.querySelector(".add-to-cart-button");
+        addToCartButton.addEventListener("click", function (event) {
+            event.stopPropagation(); // Evitar que el evento se propague al contenedor padre
+            addToCart(product.id); // Llamar a la función para agregar al carrito
+        });
+
         return productDiv;
+    }
+
+    // Función para agregar un producto al carrito
+    async function addToCart(publicationId) {
+        if (!token) {
+            alert("Por favor, inicia sesión para agregar productos al carrito.");
+            return;
+        }
+
+        try {
+            const response = await fetch(`${apiUrl}/ShoppingCart`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    publicationId: publicationId,
+                    quantity: 1 // Puedes permitir que el usuario seleccione la cantidad
+                })
+            });
+
+            if (response.ok) {
+                alert("Producto agregado al carrito exitosamente.");
+            } else {
+                const errorData = await response.json();
+                console.error("Error al agregar al carrito:", errorData);
+                alert("No se pudo agregar el producto al carrito.");
+            }
+        } catch (error) {
+            console.error("Error de conexión al agregar al carrito:", error);
+        }
     }
 
     // Cargar productos de una categoría específica
