@@ -1,20 +1,33 @@
+
 /* NAV BAR ------------------------------------------------------------------- */
 header {
     background-color: #494949;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: 10px 20px 10px 20px;
+    width: 100%;
+    position: fixed; /* Fija el header en la parte superior */
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Asegura que el header esté encima de otros elementos */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra opcional para destacar el navbar */
+}
+
+/* Espaciado adicional para el contenido cuando el navbar está fijo */
+.profile-container {
+    padding-top: 80px; /* Ajusta este valor según la altura del header */
 }
 
 .logo img {
     width: 120px;
 }
 
+/* Barra de búsqueda centrada en el navbar */
 .search-bar {
     flex-grow: 1;
     display: flex;
-    justify-content: center; /* Centrar la barra de búsqueda */
+    justify-content: center;
     align-items: center;
 }
 
@@ -33,7 +46,7 @@ header {
     cursor: pointer;
     border-radius: 5px;
     margin-left: 10px;
-    padding: 10px; /* Asegura que el ícono tenga espacio */
+    padding: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -44,13 +57,14 @@ header {
 }
 
 .search-bar button img.search-icon {
-    width: 24px; /* Ajusta el tamaño de la imagen */
-    height: 24px; /* Puedes ajustar o dejar auto si la imagen mantiene proporciones */
+    width: 24px;
+    height: 24px;
 }
 
 /* NAV LINKS ------------------------------------------------------------------- */
 .nav-links {
     display: flex;
+    margin-right: 20px; /* Mueve el último ícono hacia la izquierda para evitar que quede detrás de la barra de desplazamiento */
 }
 
 .nav-links a {
@@ -65,10 +79,11 @@ header {
     color: #9b9b9b;
 }
 
-/* DROPDOWN ---------------------------------------------------------- */
+/* DROPDOWN ------------------------------------------------------------------- */
 .dropdown {
     position: relative;
     display: inline-block;
+    margin-right: 10px; /* Ajusta el margen para que el ícono de usuario no esté cerca de la barra de desplazamiento */
 }
 
 .dropdown-content {
@@ -76,7 +91,7 @@ header {
     right: 0;
     background-color: #fff;
     min-width: 200px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
     padding: 10px;
     z-index: 45;
     border-radius: 5px;
@@ -87,8 +102,8 @@ header {
 }
 
 .dropdown.show .dropdown-content {
-    opacity: 1 !important;
-    visibility: visible !important;
+    opacity: 1;
+    visibility: visible;
 }
 
 .dropdown-content p {
@@ -109,24 +124,19 @@ header {
     background-color: #f0f0f0;
 }
 
-/* Estilo para los enlaces con el id 'configButton' */
 .dropdown-content a#configButton {
-    display: block;
-    width: 80%; /* Ocupa todo el ancho */
+    width: 80%;
     padding: 10px 0px;
-    color: #333; /* Color del texto */
-    text-align: left; /* Alineación a la izquierda */
-    text-decoration: none;
+    color: #333;
+    text-align: left;
     font-weight: normal;
-    background-color: transparent; /* Sin fondo azul */
-    border-radius: 5px;
+    background-color: transparent;
     transition: background-color 0.2s;
 }
 
-/* Cambia el color de fondo cuando el usuario hace hover solo en los enlaces con id 'configButton' */
 .dropdown-content a#configButton:hover {
-    background-color: #f0f0f0; /* Fondo gris claro al pasar el mouse */
-    color: #000; /* Color de texto negro */
+    background-color: #f0f0f0;
+    color: #000;
 }
 
 .dropdown-content a:hover {
