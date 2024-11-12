@@ -1,8 +1,9 @@
 document.addEventListener("DOMContentLoaded", function() {
     const productName = localStorage.getItem('productName');
     const productPrice = localStorage.getItem('productPrice');
-    const productImage = localStorage.getItem('productImage'); // Nuevo: imagen del producto
+    const productImage = localStorage.getItem('productImage'); // Imagen del producto
 
+    // Mostrar la información del producto en el checkout
     document.getElementById('product-name').innerText = productName;
     document.getElementById('product-price').innerText = `Precio: ${productPrice}`;
     document.getElementById('product-image').src = productImage;
@@ -10,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Mostrar el precio en la sección derecha
     document.getElementById('right-product-price').innerText = productPrice;
 
-    // Generar código QR si se selecciona el método QR
+    // Selección del método de pago
     const methods = document.querySelectorAll('.method');
     methods.forEach(method => {
         method.addEventListener('click', function() {
@@ -19,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    // Manejar el temporizador de 30 minutos
+    // Temporizador de 30 minutos
     let time = 1800; // 30 minutos en segundos
     const timerElement = document.getElementById('timer');
     
@@ -37,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     updateTimer(); // Iniciar el temporizador
 
-    // Generar QR y manejar el envío del formulario
+    // Manejo del formulario y generación de QR si es necesario
     document.querySelector('form').addEventListener('submit', function(event) {
         event.preventDefault();
         const selectedMethod = document.querySelector('.method.selected');
@@ -53,7 +54,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 });
                 alert('Código QR generado con éxito.');
             } else if (method === 'credit-card') {
-                window.location.href = `confirmacion.html?method=${method}&name=${encodeURIComponent(productName)}&price=${encodeURIComponent(productPrice)}&image=${encodeURIComponent(productImage)}`;
+                // Guardar método de pago en localStorage y redirigir sin pasar parámetros en la URL
+                localStorage.setItem('paymentMethod', 'credit-card');
+                window.location.href = 'confirmacion.html';
             }
         } else {
             alert('Por favor, selecciona un método de pago.');

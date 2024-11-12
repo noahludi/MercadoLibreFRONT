@@ -25,6 +25,8 @@ document.addEventListener("DOMContentLoaded", async function () {
                     <img id="profilePicture" src="" alt="Foto de perfil" style="width: 60px; height: 60px; border-radius: 50%; display: none; margin: 0 auto 10px;"/>
                     <p id="usernameDisplay">Bienvenido, Invitado</p>
                     <a id="configButton" href="userSettings.html">Configuración</a>
+                    <a id="configButton" href="myPurchases.html">Mis Compras</a>
+                    <a id="configButton" href="myPublications.html">Mis Publicaciones</a>
                     <a id="configButton" href="userHistory.html">Historial</a>
                     <a id="configButton" href="userQuestions.html">Preguntas</a>
                     <a id="configButton" href="userOpinions.html">Opiniones</a>

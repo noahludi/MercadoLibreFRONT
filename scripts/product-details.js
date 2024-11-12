@@ -31,29 +31,26 @@ document.addEventListener('DOMContentLoaded', async function () {
             document.getElementById('productPrice').textContent = productData.price ? `$${productData.price}` : 'Precio no disponible';
             document.getElementById('productDescription').textContent = productData.description || 'Sin descripción';
 
-            // Cargar características adicionales si existen
-            const featuresList = document.getElementById('productFeatures');
-            featuresList.innerHTML = `
-                <li>Categoría: ${productData.category?.name || 'N/A'}</li>
-            `;
+            // Guardar detalles del producto en localStorage
+            localStorage.setItem('productId', productId);
+            localStorage.setItem('productName', productData.title || 'Producto sin título');
+            localStorage.setItem('productPrice', productData.price || 'Precio no disponible');
 
-            // Si tienes una imagen, mostrarla
-            const productImage = document.querySelector('.product-image img');
-            if (productData.photos && productData.photos.length > 0) {
-                productImage.src = `data:image/jpeg;base64,${productData.photos[0].imageData}`;
+            // Configurar y guardar la imagen del producto
+            const productImageElement = document.querySelector('.product-image img');
+            if (productData.photos && productData.photos.length > 0 && productData.photos[0].imageData) {
+                const productImage = `data:image/jpeg;base64,${productData.photos[0].imageData}`;
+                productImageElement.src = productImage;
+                localStorage.setItem('productImage', productImage);
             } else {
-                productImage.src = 'resources/default-image.jpg';
+                productImageElement.src = 'resources/default-image.jpg';
+                localStorage.setItem('productImage', 'resources/default-image.jpg');
             }
 
             // Manejar el botón "Comprar ahora"
             const buyNowButton = document.querySelector('.buy-now-button');
             buyNowButton.addEventListener('click', function () {
-                if (productData.price) {
-                    console.log(`Redirigiendo al checkout con el precio: ${productData.price}`);
-                    window.location.href = `checkout.html?amount=${productData.price}&productId=${productId}`;
-                } else {
-                    console.log("No hay precio disponible para redirigir al checkout.");
-                }
+                window.location.href = "checkout.html";
             });
 
         } else {

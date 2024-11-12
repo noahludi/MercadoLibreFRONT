@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Metadatos y enlaces -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Compras</title>
+    <!-- Enlace al archivo CSS -->
+    <link rel="stylesheet" href="styles/myPurchases.css">
+    <!-- Enlace a Google Fonts para los iconos -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Enlace a estilos adicionales si es necesario -->
+    <link rel="stylesheet" href="styles/navbar.css">
+</head>
+<body>
+
+    <!-- El navbar será inyectado aquí por navbar.js -->
+    
+    <!-- Contenedor principal -->
+    <div class="purchases-container">
+        <h1>Mis Compras</h1>
+        <!-- Botón para volver atrás -->
+        <button onclick="window.history.back()" class="back-button">
+            <span class="material-icons">arrow_back</span> Volver
+        </button>
+        <!-- Lista de compras -->
+        <div id="purchasesList" class="purchases-list">
+            <!-- Las compras se cargarán aquí dinámicamente -->
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="scripts/navbar.js"></script>
+    <script src="scripts/myPurchases.js"></script>
+</body>
+</html>
