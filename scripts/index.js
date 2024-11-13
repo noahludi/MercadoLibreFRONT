@@ -7,6 +7,11 @@ document.addEventListener("DOMContentLoaded", async function () {
     const fashionContainer = document.querySelector(".fashion-list");
     const instrumentsContainer = document.querySelector(".instruments-list");
 
+    // Almacenar productos de cada categoría
+    let electronicsProducts = [];
+    let fashionProducts = [];
+    let instrumentsProducts = [];
+
     // Función para obtener el token JWT desde localStorage
     function getToken() {
         return localStorage.getItem("token"); // Asegúrate de almacenar el token con la clave 'token'
@@ -112,7 +117,6 @@ document.addEventListener("DOMContentLoaded", async function () {
 
             if (response.ok) {
                 alert('Producto agregado a favoritos exitosamente.');
-                // fetchFavourites(); // Eliminado: No existe en index.js
             } else {
                 const errorData = await response.json();
                 console.error("Error al agregar a favoritos:", errorData);
@@ -148,11 +152,18 @@ document.addEventListener("DOMContentLoaded", async function () {
                     container.appendChild(productElement);
                 });
 
-                // Agregar primer producto de cada categoría a destacados
-                if (products.length > 0) {
-                    const featuredProduct = createProductElement(products[0]);
-                    featuredProductsContainer.appendChild(featuredProduct);
+                // Almacenar los productos según la categoría
+                const categoryNameLower = categoryName.toLowerCase();
+                if (["tecnología", "tecnologia", "electrónica", "electronica"].includes(categoryNameLower)) {
+                    electronicsProducts = products;
                 }
+                if (categoryNameLower === "moda") {
+                    fashionProducts = products;
+                }
+                if (categoryNameLower === "instrumentos") {
+                    instrumentsProducts = products;
+                }
+
             } else {
                 const errorData = await response.json();
                 console.error("Error al cargar productos de categoría:", errorData.message || response.statusText);
@@ -162,34 +173,72 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
     }
 
-    // Cargar productos destacados
-    async function loadFeaturedProducts() {
-        const token = getToken(); // Obtener el token utilizando la función existente
-        if (!token) {
-            console.error("Token de autenticación no encontrado.");
+    // Función para seleccionar aleatoriamente productos para el carrusel
+    function selectRandomProducts() {
+        const selectedProducts = [];
+
+        // Función auxiliar para seleccionar productos aleatorios de una lista
+        function getRandomProductsFromList(productList, count) {
+            const shuffled = productList.sort(() => 0.5 - Math.random());
+            return shuffled.slice(0, count);
+        }
+
+        // Seleccionar al menos 2 productos de cada categoría
+        if (electronicsProducts.length > 0) {
+            selectedProducts.push(...getRandomProductsFromList(electronicsProducts, 2));
+        }
+        if (fashionProducts.length > 0) {
+            selectedProducts.push(...getRandomProductsFromList(fashionProducts, 2));
+        }
+        if (instrumentsProducts.length > 0) {
+            selectedProducts.push(...getRandomProductsFromList(instrumentsProducts, 2));
+        }
+
+        return selectedProducts;
+    }
+
+    // Función para cargar los productos seleccionados en el carrusel
+    function loadCarouselProducts() {
+        const products = selectRandomProducts();
+        featuredProductsContainer.innerHTML = ''; // Limpiar contenido previo
+
+        products.forEach(product => {
+            const productElement = createProductElement(product);
+            featuredProductsContainer.appendChild(productElement);
+        });
+
+        // Inicializar el carrusel después de cargar los productos
+        initializeProductCarousel();
+    }
+
+    // Función para inicializar el carrusel de productos
+    function initializeProductCarousel() {
+        let currentIndex = 0;
+        const productList = document.querySelector('.product-list');
+        const products = productList.children;
+        if (products.length === 0) {
+            console.warn('No se encontraron productos para el carrusel.');
             return;
         }
+        const productWidth = products[0]?.clientWidth || 0;
 
-        try {
-            const response = await fetch(`${apiUrl}/publications/featured`, {
-                headers: { "Authorization": `Bearer ${token}` }
-            });
-
-            if (response.ok) {
-                const featuredProducts = await response.json();
-                featuredProductsContainer.innerHTML = ''; // Limpiar contenido previo
-
-                featuredProducts.forEach(product => {
-                    const productElement = createProductElement(product);
-                    featuredProductsContainer.appendChild(productElement);
-                });
-            } else {
-                const errorData = await response.json();
-                console.error("Error al cargar productos destacados:", errorData.message || response.statusText);
+        document.querySelector('.carousel-next').addEventListener('click', () => {
+            currentIndex++;
+            if (currentIndex >= products.length) {
+                currentIndex = 0;
             }
-        } catch (error) {
-            console.error("Error de conexión al cargar productos destacados:", error);
-        }
+            productList.style.transition = 'transform 0.5s ease-in-out';
+            productList.style.transform = `translateX(${-currentIndex * productWidth}px)`;
+        });
+
+        document.querySelector('.carousel-prev').addEventListener('click', () => {
+            currentIndex--;
+            if (currentIndex < 0) {
+                currentIndex = products.length - 1;
+            }
+            productList.style.transition = 'transform 0.5s ease-in-out';
+            productList.style.transform = `translateX(${-currentIndex * productWidth}px)`;
+        });
     }
 
     // Obtener categorías y cargar productos por categoría
@@ -209,22 +258,24 @@ document.addEventListener("DOMContentLoaded", async function () {
                 const categories = await response.json();
 
                 // Cargar productos para las categorías de Electrónica, Moda e Instrumentos
-                categories.forEach(category => {
+                const loadCategoryPromises = categories.map(async category => {
                     const categoryNameLower = category.name.toLowerCase();
 
                     if (["tecnología", "tecnologia", "electrónica", "electronica"].includes(categoryNameLower)) {
-                        loadProductsByCategory(category.name, electronicsContainer);
+                        await loadProductsByCategory(category.name, electronicsContainer);
                     }
                     if (categoryNameLower === "moda") {
-                        loadProductsByCategory(category.name, fashionContainer);
+                        await loadProductsByCategory(category.name, fashionContainer);
                     }
                     if (categoryNameLower === "instrumentos") {
-                        loadProductsByCategory(category.name, instrumentsContainer);
+                        await loadProductsByCategory(category.name, instrumentsContainer);
                     }
                 });
 
-                // Cargar productos destacados
-                loadFeaturedProducts();
+                await Promise.all(loadCategoryPromises);
+
+                // Después de cargar todas las categorías, cargar el carrusel
+                loadCarouselProducts();
             } else {
                 const errorData = await response.json();
                 console.error("Error al cargar categorías:", errorData.message || response.statusText);
@@ -234,34 +285,10 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
     }
 
-    // Llamada a las funciones para cargar categorías y productos destacados
+    // Llamada a las funciones para cargar categorías y productos del carrusel
     await loadCategories();
 
-    // Carrusel de productos destacados
-    let currentIndex = 0;
-    const productList = document.querySelector('.product-list');
-    const products = productList.children;
-    const productWidth = products[0]?.clientWidth || 0;
-
-    document.querySelector('.carousel-next').addEventListener('click', () => {
-        currentIndex++;
-        if (currentIndex >= products.length) {
-            currentIndex = 0;
-        }
-        productList.style.transition = 'transform 0.5s ease-in-out';
-        productList.style.transform = `translateX(${-currentIndex * productWidth}px)`;
-    });
-
-    document.querySelector('.carousel-prev').addEventListener('click', () => {
-        currentIndex--;
-        if (currentIndex < 0) {
-            currentIndex = products.length - 1;
-        }
-        productList.style.transition = 'transform 0.5s ease-in-out';
-        productList.style.transform = `translateX(${-currentIndex * productWidth}px)`;
-    });
-
-    // Carrusel de publicidad
+    // Carrusel de publicidad (mantiene tu código existente)
     let currentAdIndex = 0;
     const adList = document.querySelector('.ad-images');
     const ads = document.querySelectorAll('.ad-images img');

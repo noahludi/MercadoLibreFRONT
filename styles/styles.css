@@ -3,10 +3,27 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5; /* Cambiado de degradado radial a color de fondo original */
-    color: #000000; /* Cambiado el color del texto a negro */
+    color: #000000;
     padding-top: 5%;
+    position: relative; /* Necesario para posicionar el pseudo-elemento */
+    overflow-x: hidden; /* Evita barras de desplazamiento horizontales */
 }
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../resources/bgtexture.jpg');
+    background-repeat: repeat; /* Mantén el valor 'repeat' para crear un mosaico */
+    background-size: 250px 250px; /* Ajusta el tamaño de la imagen de fondo */
+    filter: blur(5px);
+    opacity: 0.3;
+    z-index: -1;
+}
+
 
 /* Ajuste del Carrusel de Anuncios ------------------------------------------------------------------- */
 .carousel-container-ad {
