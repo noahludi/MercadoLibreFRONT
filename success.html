@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pago Exitoso</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f7f7f7;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: fadeOut 8s forwards;
+        }
+
+        .logo-loading {
+            width: 100px;
+            height: 100px;
+            border: 8px solid #ccc;
+            border-top: 8px solid #4caf50;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        .message {
+            display: none;
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        .message .success-icon {
+            font-size: 3em;
+            color: #4caf50;
+            margin-top: 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="logo-loading"></div>
+    <div class="message">
+        <h1>Pago realizado con éxito</h1>
+        <p>Gracias por tu compra.</p>
+        <div class="success-icon">✔️</div>
+    </div>
+</div>
+
+<script>
+    setTimeout(() => {
+        document.querySelector('.logo-loading').style.display = 'none';
+        document.querySelector('.message').style.display = 'block';
+    }, 5000);
+
+    setTimeout(() => {
+        window.location.href = 'myPurchases.html';
+    }, 8000);
+</script>
+
+</body>
+</html>

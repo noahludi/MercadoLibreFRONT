@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     // Crear el elemento header y su contenido
     const header = document.createElement('header');
     header.innerHTML = `
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap">
         <div class="logo">
             <a href="index.html">
                 <img src="resources/Logo.png" alt="Logo" style="width: 120px;">
@@ -28,6 +29,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                     <a id="configButton" href="myPurchases.html">Mis Compras</a>
                     <a id="configButton" href="myPublications.html">Mis Publicaciones</a>
                     <a id="configButton" href="userHistory.html">Historial</a>
+                    <a id="configButton" href="paymentMethods.html">Métodos de Pago</a>
                     <a id="configButton" href="userQuestions.html">Preguntas</a>
                     <a id="configButton" href="userOpinions.html">Opiniones</a>
                     <a href="login.html" id="loginLink">Ingresar</a>

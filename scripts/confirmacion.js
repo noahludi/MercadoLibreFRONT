@@ -75,13 +75,11 @@ document.addEventListener("DOMContentLoaded", async function () {
     // Función para registrar transacción
     async function saveTransaction(cardId) {
         const transactionData = {
-            idBuyer: userId,
             idCard: cardId,
             idPublication: parseInt(productId),
-            amount: parseFloat(productPrice)
         };
         console.log("Datos de la transacción:", transactionData);
-        const response = await fetch(`${apiUrl}/transactions`, {
+        const response = await fetch(`${apiUrl}/transaction`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
