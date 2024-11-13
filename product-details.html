@@ -8,9 +8,12 @@
     <link rel="stylesheet" href="styles/navbar.css">
     <!-- Enlace a Google Fonts para los íconos -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap">
-    <script src="scripts/navbar.js"></script>
+    <script src="scripts/navbar.js" defer></script>
 </head>
 <body>
+
+    <!-- Navbar existente -->
+    <!-- Asegúrate de que tu navbar esté aquí -->
 
     <!-- Sección principal de detalles del producto -->
     <div class="product-details-container">
@@ -33,10 +36,65 @@
             <button class="buy-now-button">Comprar ahora</button>
 
             <!-- Métodos de pago (puedes mantener esta sección o actualizarla) -->
+            <div class="payment-methods">
+                <img src="https://http2.mlstatic.com/storage/logos-api-admin/a5f047d0-9be0-11ec-aad4-c3381f368aaf-m.svg" alt="Método de Pago 1">
+                <img src="https://http2.mlstatic.com/storage/logos-api-admin/aa2b8f70-5c85-11ec-ae75-df2bef173be2-m.svg" alt="Método de Pago 2">
+                <img src="https://http2.mlstatic.com/storage/logos-api-admin/b4785730-c13f-11ee-b4b3-bb9a23b70639-m.svg" alt="Método de Pago 3">
+            </div>
         </div>
     </div>
 
-    <!-- Script al final del body -->
+    <!-- Sección del Vendedor -->
+    <section class="seller-section">
+        <h2>Información del Vendedor</h2>
+        <div class="seller-info">
+            <img id="sellerAvatar" src="resources/default-avatar.png" alt="Avatar del Vendedor">
+            <div class="seller-details">
+                <h3 id="sellerName">Nombre del Vendedor</h3>
+                <p id="sellerRating">Calificación: ★★★★☆</p>
+                <p id="sellerDescription">Descripción del vendedor...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Reseñas -->
+    <section class="reviews-section">
+        <h2>Reseñas y Comentarios</h2>
+        <div id="reviews-container">
+            <p class="loading">Cargando reseñas...</p>
+        </div>
+    </section>
+
+    <!-- Sección de Preguntas -->
+    <section class="questions-section">
+        <h2>Preguntas sobre el Producto</h2>
+
+        <!-- Formulario para hacer una pregunta -->
+        <form id="askQuestionForm" class="ask-question-form">
+            <textarea id="questionText" name="questionText" rows="4" placeholder="Escribe tu pregunta aquí..." required></textarea>
+            <button type="submit">Enviar Pregunta</button>
+            <p id="questionError" class="error-message"></p>
+        </form>
+
+        <!-- Listado de preguntas existentes -->
+        <div id="questions-container">
+            <p class="loading">Cargando preguntas...</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Mercado Negro</p>
+    </footer>
+
+    <!-- Modal de Confirmación -->
+    <div id="confirmationModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <p id="confirmationMessage"></p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
     <script src="scripts/product-details.js"></script>
 </body>
 </html>

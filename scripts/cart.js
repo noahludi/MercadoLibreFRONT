@@ -166,7 +166,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     // Función para eliminar un producto del carrito
     async function removeCartItem(publicationId) {
         try {
-            const response = await fetch(`${apiUrl}/ShoppingCart?publicationId=${publicationId}`, {
+            const response = await fetch(`${apiUrl}/ShoppingCart/${publicationId}`, {
                 method: "DELETE",
                 headers: {
                     "Authorization": `Bearer ${token}`

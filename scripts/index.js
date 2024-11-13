@@ -1,12 +1,16 @@
 // index.js
 
 document.addEventListener("DOMContentLoaded", async function () {
-    const token = localStorage.getItem("token");
     const apiUrl = "https://mercadoplus.somee.com/api";
     const featuredProductsContainer = document.querySelector(".product-list");
     const electronicsContainer = document.querySelector(".electronics-list");
     const fashionContainer = document.querySelector(".fashion-list");
     const instrumentsContainer = document.querySelector(".instruments-list");
+
+    // Función para obtener el token JWT desde localStorage
+    function getToken() {
+        return localStorage.getItem("token"); // Asegúrate de almacenar el token con la clave 'token'
+    }
 
     // Crear un elemento de producto
     function createProductElement(product) {
@@ -17,7 +21,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         productDiv.innerHTML = `
             <img src="data:image/jpeg;base64,${product.photos[0]?.imageData || ''}" alt="${product.title}" />
             <p>${product.title}</p>
-            <span>$${product.price}</span>
+            <span>$${product.price.toFixed(2)}</span>
             <button class="add-to-cart-button">
                 <img src="resources/addToCart.png" alt="Agregar al carrito">
             </button>
@@ -52,6 +56,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     // Función para agregar un producto al carrito
     async function addToCart(publicationId) {
+        const token = getToken(); // Obtener el token utilizando la función existente
+
         if (!token) {
             alert("Por favor, inicia sesión para agregar productos al carrito.");
             return;
@@ -79,30 +85,34 @@ document.addEventListener("DOMContentLoaded", async function () {
             }
         } catch (error) {
             console.error("Error de conexión al agregar al carrito:", error);
+            alert("Error de conexión. Por favor, intenta nuevamente.");
         }
     }
 
     // Función para agregar un producto a favoritos
     async function addToFavourite(publicationId) {
+        const token = getToken(); // Obtener el token utilizando la función existente
+
         if (!token) {
             alert("Por favor, inicia sesión para agregar productos a favoritos.");
             return;
         }
 
         try {
-            const response = await fetch('https://mercadoplus.somee.com/api/wished-articles', {
+            const response = await fetch(`${apiUrl}/wished-articles`, { // Usar la variable apiUrl
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${token}`
                 },
                 body: JSON.stringify({
-                    publicationId: publicationId
+                    idPublication: publicationId // Corregir el nombre de la propiedad según Swagger
                 })
             });
 
             if (response.ok) {
                 alert('Producto agregado a favoritos exitosamente.');
+                // fetchFavourites(); // Eliminado: No existe en index.js
             } else {
                 const errorData = await response.json();
                 console.error("Error al agregar a favoritos:", errorData);
@@ -116,6 +126,12 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     // Cargar productos de una categoría específica
     async function loadProductsByCategory(categoryName, container) {
+        const token = getToken(); // Obtener el token utilizando la función existente
+        if (!token) {
+            console.error("Token de autenticación no encontrado.");
+            return;
+        }
+
         try {
             const response = await fetch(`${apiUrl}/publications/by-category?categoryName=${encodeURIComponent(categoryName)}`, {
                 headers: { "Authorization": `Bearer ${token}` }
@@ -138,7 +154,8 @@ document.addEventListener("DOMContentLoaded", async function () {
                     featuredProductsContainer.appendChild(featuredProduct);
                 }
             } else {
-                console.error("Error al cargar productos de categoría:", response.statusText);
+                const errorData = await response.json();
+                console.error("Error al cargar productos de categoría:", errorData.message || response.statusText);
             }
         } catch (error) {
             console.error("Error de conexión al cargar productos de categoría:", error);
@@ -147,6 +164,12 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     // Cargar productos destacados
     async function loadFeaturedProducts() {
+        const token = getToken(); // Obtener el token utilizando la función existente
+        if (!token) {
+            console.error("Token de autenticación no encontrado.");
+            return;
+        }
+
         try {
             const response = await fetch(`${apiUrl}/publications/featured`, {
                 headers: { "Authorization": `Bearer ${token}` }
@@ -161,7 +184,8 @@ document.addEventListener("DOMContentLoaded", async function () {
                     featuredProductsContainer.appendChild(productElement);
                 });
             } else {
-                console.error("Error al cargar productos destacados:", response.statusText);
+                const errorData = await response.json();
+                console.error("Error al cargar productos destacados:", errorData.message || response.statusText);
             }
         } catch (error) {
             console.error("Error de conexión al cargar productos destacados:", error);
@@ -170,6 +194,12 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     // Obtener categorías y cargar productos por categoría
     async function loadCategories() {
+        const token = getToken(); // Obtener el token utilizando la función existente
+        if (!token) {
+            console.error("Token de autenticación no encontrado.");
+            return;
+        }
+
         try {
             const response = await fetch(`${apiUrl}/categories`, {
                 headers: { "Authorization": `Bearer ${token}` }
@@ -196,7 +226,8 @@ document.addEventListener("DOMContentLoaded", async function () {
                 // Cargar productos destacados
                 loadFeaturedProducts();
             } else {
-                console.error("Error al cargar categorías:", response.statusText);
+                const errorData = await response.json();
+                console.error("Error al cargar categorías:", errorData.message || response.statusText);
             }
         } catch (error) {
             console.error("Error de conexión al cargar categorías:", error);

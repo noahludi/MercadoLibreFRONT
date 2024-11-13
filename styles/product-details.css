@@ -1,9 +1,12 @@
+/* product-details.css */
+
+/* GLOBAL ------------------------------------------------------------------- */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f5f5f5;
-    margin: 0 auto;
+    padding-top: 5%;
 }
 
 .product-details-container {
@@ -16,6 +19,7 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     align-items: center;
+    flex-wrap: wrap; /* Para responsividad */
 }
 
 .product-image {
@@ -106,34 +110,302 @@ body {
     transform: scale(1.1);
 }
 
-/* LOGOS METODOS DE PAGO */
-.ui-vip-payment_methods {
-    margin-top: 20px;
+/* SECCIÓN DEL VENDEDOR ----------------------------------------------------- */
+.seller-section {
+    padding: 20px 30px;
+    background-color: white;
+    width: 60%;
+    margin: 20px auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
 }
 
-.ui-vip-payment_methods__title {
+.seller-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: #333;
+}
+
+.seller-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.seller-info img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.seller-details h3 {
+    margin: 0;
+    font-size: 22px;
+    color: #333;
+}
+
+.seller-details p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #666;
+}
+
+/* SECCIÓN DE RESEÑAS ------------------------------------------------------- */
+.reviews-section {
+    padding: 20px 30px;
+    background-color: white;
+    width: 60%;
+    margin: 20px auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.reviews-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: #333;
+}
+
+.review {
+    border-bottom: 1px solid #ddd;
+    padding: 15px 0;
+}
+
+.review:last-child {
+    border-bottom: none;
+}
+
+.review-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.review-header img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.reviewer-name {
+    font-size: 18px;
+    color: #333;
+}
+
+.reviewer-rating {
+    font-size: 16px;
+    color: #f1c40f;
+}
+
+.review-body {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #555;
+}
+
+.review-body p {
+    margin: 0;
+}
+
+/* SECCIÓN DE PREGUNTAS ------------------------------------------------------ */
+.questions-section {
+    padding: 20px 30px;
+    background-color: white;
+    width: 60%;
+    margin: 20px auto 40px auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.questions-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: #333;
+}
+
+/* Estilos para el formulario de preguntas */
+.ask-question-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+/* Estilos mejorados para el textarea */
+.ask-question-form textarea {
+    width: 100%; /* Ocupa todo el ancho del contenedor */
+    padding: 12px 15px; /* Espaciado interno más cómodo */
+    font-size: 16px;
+    line-height: 1.5;
+    border: 1px solid #ccc; /* Borde suave */
+    border-radius: 5px; /* Bordes redondeados */
+    resize: none; /* Deshabilita la posibilidad de redimensionar */
+    box-sizing: border-box; /* Incluye padding y border en el ancho total */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transiciones suaves */
+    background-color: #f9f9f9; /* Fondo ligeramente grisáceo */
+}
+
+.ask-question-form textarea:focus {
+    border-color: #27ae60; /* Cambio de color del borde al enfocar */
+    box-shadow: 0 0 5px rgba(39, 174, 96, 0.5); /* Sombra sutil al enfocar */
+    outline: none; /* Elimina el outline predeterminado */
+}
+
+/* Estilos mejorados para el botón de enviar pregunta */
+.ask-question-form button {
+    padding: 12px 20px; /* Espaciado interno más cómodo */
+    background-color: #27ae60; /* Color de fondo verde */
+    color: white; /* Texto en blanco */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
     font-size: 16px;
     font-weight: bold;
-    margin-bottom: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transiciones suaves */
 }
 
-.ui-pdp-payment-icon {
+.ask-question-form button:hover {
+    background-color: #1e8449; /* Color de fondo más oscuro al pasar el cursor */
+}
+
+.ask-question-form button:active {
+    transform: scale(0.98); /* Efecto de "click" al presionar el botón */
+}
+
+/* Estilos para mensajes de error */
+.error-message {
+    color: #e74c3c; /* Color rojo para errores */
+    text-align: center;
+    font-size: 16px;
+}
+
+.question {
+    border-bottom: 1px solid #ddd;
+    padding: 15px 0;
+}
+
+.question:last-child {
+    border-bottom: none;
+}
+
+.question-header {
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
     gap: 10px;
-    margin-bottom: 20px;
 }
 
-.ui-pdp-payment-icon__container {
-    display: inline-block;
+.questioner-name {
+    font-size: 18px;
+    color: #333;
 }
 
-.ui-pdp-payment-icon__size {
-    width: 50px;
-    height: 50px;
+.question-body {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #555;
 }
 
-.ui-pdp-payment-icon__size img {
-    width: 100%;
-    height: auto;
+.question-body p {
+    margin: 0;
+}
+
+.answer {
+    margin-top: 10px;
+    padding-left: 20px;
+    border-left: 2px solid #3483fa;
+}
+
+.answer p {
+    font-size: 16px;
+    color: #555;
+}
+
+/* Modal de Confirmación */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed; /* Fijo en la pantalla */
+    z-index: 3000; /* Asegúrate de que esté por encima de otros elementos */
+    left: 0;
+    top: 0;
+    width: 100%; /* Ancho completo */
+    height: 100%; /* Altura completa */
+    overflow: auto; /* Habilita el scroll si es necesario */
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto; /* 15% desde arriba y centrado */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #000;
+}
+
+/* FOOTER ------------------------------------------------------------------- */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* RESPONSIVIDAD ------------------------------------------------------------ */
+@media (max-width: 1200px) {
+    .product-details-container {
+        width: 90%;
+    }
+    .product-info {
+        max-width: 100%;
+        padding-left: 0;
+        margin-top: 20px;
+    }
+    .product-image {
+        width: 100%;
+    }
+    .seller-section,
+    .reviews-section,
+    .questions-section {
+        width: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+    .product-details-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .seller-info {
+        flex-direction: column;
+        text-align: center;
+    }
+    .reviews-section,
+    .questions-section {
+        width: 100%;
+        padding: 20px 15px;
+    }
 }

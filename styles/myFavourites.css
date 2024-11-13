@@ -1,21 +1,29 @@
-/* myFavourites.css */
+/* Estilos Generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    padding-top: 5%;
+}
 
-/* SECCIÓN DE FAVORITOS --------------------------------------------------- */
+/* Espaciado superior para evitar solapamiento con el navbar */
 .favourites-section {
-    width: 90%;
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 20px;
-    background-color: #fff;
+    background-color: #ffffff;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 100px auto 20px; /* margen superior para evitar solapamiento */
 }
 
 .favourites-section h2 {
     text-align: center;
     margin-bottom: 20px;
-    font-size: 28px;
+    font-size: 24px;
     color: #333;
+    font-weight: bold;
 }
 
 /* Contenedor de Favoritos */
@@ -28,94 +36,106 @@
 
 /* Tarjeta de Favorito */
 .favourite-card {
-    width: 200px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    background-color: #fafafa;
+    width: 300px;
     display: flex;
     flex-direction: column;
-    transition: box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .favourite-card:hover {
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
+/* Imagen de Favorito */
 .favourite-card img {
     width: 100%;
-    height: 150px;
+    height: 180px;
     object-fit: cover;
 }
 
-.favourite-card .card-content {
-    padding: 10px;
+/* Contenido de la tarjeta */
+.card-content {
+    padding: 15px;
     flex-grow: 1;
 }
 
-.favourite-card .card-content h3 {
+.card-content h3 {
     font-size: 18px;
-    margin: 10px 0;
     color: #333;
+    margin-bottom: 8px;
 }
 
-.favourite-card .card-content p {
+.card-content p {
     font-size: 16px;
     color: #666;
 }
 
-.favourite-card .card-actions {
+/* Botones de Acción con Íconos */
+.card-actions {
     display: flex;
     justify-content: space-around;
+    align-items: center;
     padding: 10px;
+    background-color: #f9f9f9;
+    border-top: 1px solid #e0e0e0;
 }
 
-.favourite-card .card-actions button {
-    padding: 5px 10px;
+.card-actions .action-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: none;
     border: none;
-    border-radius: 4px;
-    font-size: 14px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: color 0.3s ease;
 }
 
-.favourite-card .card-actions .remove-favourite {
-    background-color: #e74c3c;
-    color: white;
+.card-actions .action-button .material-icons {
+    font-size: 24px;
+    margin-bottom: 4px;
+    transition: color 0.3s ease;
 }
 
-.favourite-card .card-actions .remove-favourite:hover {
-    background-color: #c0392b;
+/* Colores específicos para cada acción */
+.card-actions .action-button.remove {
+    color: #333;
+}
+.card-actions .action-button.remove:hover .material-icons {
+    color: #e74c3c; /* Rojo para eliminar */
+}
+.card-actions .action-button.remove:hover span {
+    color: #e74c3c;
 }
 
-.favourite-card .card-actions .add-to-cart {
-    background-color: #27ae60;
-    color: white;
+.card-actions .action-button.cart {
+    color: #333;
+}
+.card-actions .action-button.cart:hover .material-icons {
+    color: #f1c40f; /* Amarillo para agregar al carrito */
+}
+.card-actions .action-button.cart:hover span {
+    color: #f1c40f;
 }
 
-.favourite-card .card-actions .add-to-cart:hover {
-    background-color: #1e8449;
+.card-actions .action-button.buy-now {
+    color: #333;
 }
-
-.favourite-card .card-actions .buy-now {
-    background-color: #f1c40f;
-    color: white;
+.card-actions .action-button.buy-now:hover .material-icons {
+    color: #27ae60; /* Verde para comprar ahora */
 }
-
-.favourite-card .card-actions .buy-now:hover {
-    background-color: #d4ac0d;
+.card-actions .action-button.buy-now:hover span {
+    color: #27ae60;
 }
 
 /* Mensajes de Carga y Error */
-.error {
-    color: red;
-    text-align: center;
-    font-size: 18px;
-    margin-top: 20px;
-}
-
+.error,
 .loading {
+    color: #3498db;
     text-align: center;
     font-size: 18px;
     margin-top: 20px;
@@ -123,41 +143,57 @@
 
 /* Modal de Confirmación */
 .modal {
-    display: none; /* Oculto por defecto */
-    position: fixed; /* Fijo en la pantalla */
-    z-index: 3000; /* Asegúrate de que esté por encima de otros elementos */
+    display: none;
+    position: fixed;
+    z-index: 1000;
     left: 0;
     top: 0;
-    width: 100%; /* Ancho completo */
-    height: 100%; /* Altura completa */
-    overflow: auto; /* Habilita el scroll si es necesario */
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
 }
 
 .modal-content {
-    background-color: #fff;
-    margin: 15% auto; /* 15% desde arriba y centrado */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 400px;
+    background-color: #ffffff;
+    padding: 20px 30px;
     border-radius: 10px;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     position: relative;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
 }
 
 .close-button {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+    color: #999;
+    font-size: 22px;
     position: absolute;
     right: 20px;
-    top: 10px;
+    top: 15px;
     cursor: pointer;
     transition: color 0.3s ease;
 }
 
-.close-button:hover,
-.close-button:focus {
-    color: #000;
+.close-button:hover {
+    color: #333;
+}
+
+/* Responsive para pantallas pequeñas */
+@media (max-width: 768px) {
+    .favourites-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .favourite-card {
+        width: 100%;
+    }
 }

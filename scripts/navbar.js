@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         </div>
         <div class="search-bar">
             <input type="text" placeholder="Buscar productos, marcas y más...">
-            <button><img src="resources/search.png" class="search-icon" alt="Buscar"/></button>
+            <button id="searchButton"><img src="resources/search.png" class="search-icon" alt="Buscar"/></button>
         </div>
         <div class="nav-links">
             <a href="index.html"><span class="material-symbols-outlined">home</span></a>
@@ -41,19 +41,24 @@ document.addEventListener("DOMContentLoaded", async function () {
     // Insertar el header al inicio del body
     document.body.insertBefore(header, document.body.firstChild);
 
-    // Ahora continuamos con el código que maneja la lógica del navbar
+    // Funcionalidad de búsqueda
+    const searchInput = document.querySelector(".search-bar input");
+    const searchButton = document.getElementById("searchButton");
+
+    searchButton.addEventListener("click", function () {
+        const searchQuery = searchInput.value.trim();
+        if (searchQuery) {
+            window.location.href = `searchResult.html?searchTerm=${encodeURIComponent(searchQuery)}`;
+        }
+    });
 
     // Verificar si el usuario está autenticado
-    if (!token) {
-        console.log("No se encontró información de un token.");
-    } else {
+    if (token) {
         // Obtener información del usuario
         try {
             const userResponse = await fetch(`${apiUrl}/account/getUserInfo`, {
                 method: "GET",
-                headers: {
-                    "Authorization": "Bearer " + token
-                }
+                headers: { "Authorization": "Bearer " + token }
             });
 
             if (userResponse.ok) {
@@ -70,9 +75,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 if (profilePhotoId) {
                     const photoResponse = await fetch(`${apiUrl}/photos/${profilePhotoId}`, {
                         method: "GET",
-                        headers: {
-                            "Authorization": "Bearer " + token
-                        }
+                        headers: { "Authorization": "Bearer " + token }
                     });
 
                     if (photoResponse.ok) {

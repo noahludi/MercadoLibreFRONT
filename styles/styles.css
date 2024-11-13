@@ -5,6 +5,7 @@ body {
     padding: 0;
     background-color: #f5f5f5; /* Cambiado de degradado radial a color de fondo original */
     color: #000000; /* Cambiado el color del texto a negro */
+    padding-top: 5%;
 }
 
 /* Ajuste del Carrusel de Anuncios ------------------------------------------------------------------- */
