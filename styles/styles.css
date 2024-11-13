@@ -143,7 +143,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
-    position: relative; /* Para posicionar el botón "Agregar al carrito" */
+    position: relative; /* Para posicionar los botones dentro del producto */
 }
 
 .product:hover {
@@ -177,11 +177,36 @@ body {
     position: absolute;
     top: 10px;
     right: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .product .add-to-cart-button img {
     width: 24px;
     height: 24px;
+}
+
+/* Botón "Agregar a favoritos" */
+.product .add-to-favourite-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 40px; /* Ajusta la posición para que esté al lado del botón de carrito */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.product .add-to-favourite-button img {
+    width: 24px;
+    height: 24px;
+}
+
+/* Mostrar ambos botones al hacer hover sobre el producto */
+.product:hover .add-to-cart-button,
+.product:hover .add-to-favourite-button {
+    opacity: 1;
 }
 
 /* Botones de navegación */
@@ -244,7 +269,7 @@ body {
     transition: transform 0.3s ease;
     width: 90%;
     height: auto;
-    position: relative; /* Para posicionar el botón "Agregar al carrito" */
+    position: relative; /* Para posicionar los botones dentro del producto */
 }
 
 .electronics-list .product img {
@@ -278,11 +303,34 @@ body {
     position: absolute;
     top: 10px;
     right: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .electronics-list .product .add-to-cart-button img {
     width: 24px;
     height: 24px;
+}
+
+.electronics-list .product .add-to-favourite-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 40px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.electronics-list .product .add-to-favourite-button img {
+    width: 24px;
+    height: 24px;
+}
+
+.electronics-list .product:hover .add-to-cart-button,
+.electronics-list .product:hover .add-to-favourite-button {
+    opacity: 1;
 }
 
 /* MODA --------------------------------------------------------------------- */
@@ -317,7 +365,7 @@ body {
     transition: transform 0.3s ease;
     width: 90%;
     height: auto;
-    position: relative; /* Para posicionar el botón "Agregar al carrito" */
+    position: relative; /* Para posicionar los botones dentro del producto */
 }
 
 .fashion-list .product img {
@@ -351,11 +399,34 @@ body {
     position: absolute;
     top: 10px;
     right: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .fashion-list .product .add-to-cart-button img {
     width: 24px;
     height: 24px;
+}
+
+.fashion-list .product .add-to-favourite-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 40px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.fashion-list .product .add-to-favourite-button img {
+    width: 24px;
+    height: 24px;
+}
+
+.fashion-list .product:hover .add-to-cart-button,
+.fashion-list .product:hover .add-to-favourite-button {
+    opacity: 1;
 }
 
 /* Instrumentos ------------------------------------------------------------------- */
@@ -390,7 +461,7 @@ body {
     transition: transform 0.3s ease;
     width: 90%;
     height: auto;
-    position: relative; /* Para posicionar el botón "Agregar al carrito" */
+    position: relative; /* Para posicionar los botones dentro del producto */
 }
 
 .instruments-list .product img {
@@ -424,11 +495,34 @@ body {
     position: absolute;
     top: 10px;
     right: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .instruments-list .product .add-to-cart-button img {
     width: 24px;
     height: 24px;
+}
+
+.instruments-list .product .add-to-favourite-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 40px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.instruments-list .product .add-to-favourite-button img {
+    width: 24px;
+    height: 24px;
+}
+
+.instruments-list .product:hover .add-to-cart-button,
+.instruments-list .product:hover .add-to-favourite-button {
+    opacity: 1;
 }
 
 /* FOOTER ------------------------------------------------------------------- */

@@ -1,0 +1,163 @@
+/* myFavourites.css */
+
+/* SECCIÓN DE FAVORITOS --------------------------------------------------- */
+.favourites-section {
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.favourites-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: #333;
+}
+
+/* Contenedor de Favoritos */
+#favourites-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Tarjeta de Favorito */
+.favourite-card {
+    width: 200px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #fafafa;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.3s ease;
+}
+
+.favourite-card:hover {
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.favourite-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.favourite-card .card-content {
+    padding: 10px;
+    flex-grow: 1;
+}
+
+.favourite-card .card-content h3 {
+    font-size: 18px;
+    margin: 10px 0;
+    color: #333;
+}
+
+.favourite-card .card-content p {
+    font-size: 16px;
+    color: #666;
+}
+
+.favourite-card .card-actions {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+.favourite-card .card-actions button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.favourite-card .card-actions .remove-favourite {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.favourite-card .card-actions .remove-favourite:hover {
+    background-color: #c0392b;
+}
+
+.favourite-card .card-actions .add-to-cart {
+    background-color: #27ae60;
+    color: white;
+}
+
+.favourite-card .card-actions .add-to-cart:hover {
+    background-color: #1e8449;
+}
+
+.favourite-card .card-actions .buy-now {
+    background-color: #f1c40f;
+    color: white;
+}
+
+.favourite-card .card-actions .buy-now:hover {
+    background-color: #d4ac0d;
+}
+
+/* Mensajes de Carga y Error */
+.error {
+    color: red;
+    text-align: center;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.loading {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+/* Modal de Confirmación */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed; /* Fijo en la pantalla */
+    z-index: 3000; /* Asegúrate de que esté por encima de otros elementos */
+    left: 0;
+    top: 0;
+    width: 100%; /* Ancho completo */
+    height: 100%; /* Altura completa */
+    overflow: auto; /* Habilita el scroll si es necesario */
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto; /* 15% desde arriba y centrado */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #000;
+}

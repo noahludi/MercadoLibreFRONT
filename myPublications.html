@@ -1,0 +1,71 @@
+<!-- myPublications.html -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Publicaciones</title>
+    <link rel="stylesheet" href="styles/myPublications.css">
+    <link rel="stylesheet" href="styles/navbar.css"> <!-- Asegúrate de tener estilos para el navbar -->
+</head>
+<body>
+
+    <!-- Navbar Inyectado -->
+    <script src="scripts/navbar.js"></script>
+
+    <!-- Sección de Publicaciones -->
+    <section class="publications-section">
+        <h2>Mis Publicaciones</h2>
+        <div id="publications">
+            <p class="loading">Cargando tus publicaciones...</p>
+        </div>
+    </section>
+
+    <!-- Modal para Editar Publicación -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Editar Publicación</h2>
+            <form id="editPublicationForm">
+                <label for="editTitle">Título:</label>
+                <input type="text" id="editTitle" name="title" maxlength="100" required>
+
+                <label for="editDescription">Descripción:</label>
+                <textarea id="editDescription" name="description" maxlength="500" required></textarea>
+
+                <label for="editPrice">Precio:</label>
+                <input type="number" id="editPrice" name="price" min="0.01" step="0.01" required>
+
+                <label for="editStock">Stock:</label>
+                <input type="number" id="editStock" name="stock" min="1" max="999" required>
+
+                <label for="editColor">Color:</label>
+                <select id="editColor" name="idColor" required></select>
+
+                <label for="editPublicationState">Estado de Publicación:</label>
+                <select id="editPublicationState" name="idPublicationState" required></select>
+
+                <label for="editProductState">Estado del Producto:</label>
+                <select id="editProductState" name="idProductState" required></select>
+
+                <label for="editPhotos">Fotos:</label>
+                <input type="file" id="editPhotos" accept="image/*" multiple>
+                <div id="editPhotoPreviewContainer" class="photo-preview">
+                    <!-- Previsualización de fotos existentes se añadirá dinámicamente -->
+                </div>
+
+                <button type="submit">Guardar Cambios</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Mercado Libre</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="scripts/myPublications.js"></script>
+</body>
+</html>

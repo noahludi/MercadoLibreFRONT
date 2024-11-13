@@ -1,3 +1,5 @@
+// index.js
+
 document.addEventListener("DOMContentLoaded", async function () {
     const token = localStorage.getItem("token");
     const apiUrl = "https://mercadoplus.somee.com/api";
@@ -19,20 +21,30 @@ document.addEventListener("DOMContentLoaded", async function () {
             <button class="add-to-cart-button">
                 <img src="resources/addToCart.png" alt="Agregar al carrito">
             </button>
+            <button class="add-to-favourite-button">
+                <img src="resources/favourite.png" alt="Agregar a favoritos">
+            </button>
         `;
-
-        // Añadir evento de clic para redirigir a product-details.html con el ID del producto
-        productDiv.querySelector("img").addEventListener("click", function (event) {
-            event.stopPropagation();
-            const productId = productDiv.getAttribute("data-product-id");
-            window.location.href = `product-details.html?productId=${productId}`;
-        });
 
         // Evento para agregar al carrito
         const addToCartButton = productDiv.querySelector(".add-to-cart-button");
         addToCartButton.addEventListener("click", function (event) {
             event.stopPropagation(); // Evitar que el evento se propague al contenedor padre
             addToCart(product.id); // Llamar a la función para agregar al carrito
+        });
+
+        // Evento para agregar a favoritos
+        const addToFavouriteButton = productDiv.querySelector(".add-to-favourite-button");
+        addToFavouriteButton.addEventListener("click", function (event) {
+            event.stopPropagation(); // Evitar que el evento se propague al contenedor padre
+            addToFavourite(product.id); // Llamar a la función para agregar a favoritos
+        });
+
+        // Evento al hacer clic en la imagen para ir a detalles del producto
+        productDiv.querySelector("img").addEventListener("click", function (event) {
+            event.stopPropagation();
+            const productId = productDiv.getAttribute("data-product-id");
+            window.location.href = `product-details.html?productId=${productId}`;
         });
 
         return productDiv;
@@ -70,6 +82,38 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
     }
 
+    // Función para agregar un producto a favoritos
+    async function addToFavourite(publicationId) {
+        if (!token) {
+            alert("Por favor, inicia sesión para agregar productos a favoritos.");
+            return;
+        }
+
+        try {
+            const response = await fetch('https://mercadoplus.somee.com/api/wished-articles', {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    publicationId: publicationId
+                })
+            });
+
+            if (response.ok) {
+                alert('Producto agregado a favoritos exitosamente.');
+            } else {
+                const errorData = await response.json();
+                console.error("Error al agregar a favoritos:", errorData);
+                alert(errorData.message || "No se pudo agregar el producto a favoritos.");
+            }
+        } catch (error) {
+            console.error("Error de conexión al agregar a favoritos:", error);
+            alert("Error de conexión. Por favor, intenta nuevamente.");
+        }
+    }
+
     // Cargar productos de una categoría específica
     async function loadProductsByCategory(categoryName, container) {
         try {
@@ -101,6 +145,29 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
     }
 
+    // Cargar productos destacados
+    async function loadFeaturedProducts() {
+        try {
+            const response = await fetch(`${apiUrl}/publications/featured`, {
+                headers: { "Authorization": `Bearer ${token}` }
+            });
+
+            if (response.ok) {
+                const featuredProducts = await response.json();
+                featuredProductsContainer.innerHTML = ''; // Limpiar contenido previo
+
+                featuredProducts.forEach(product => {
+                    const productElement = createProductElement(product);
+                    featuredProductsContainer.appendChild(productElement);
+                });
+            } else {
+                console.error("Error al cargar productos destacados:", response.statusText);
+            }
+        } catch (error) {
+            console.error("Error de conexión al cargar productos destacados:", error);
+        }
+    }
+
     // Obtener categorías y cargar productos por categoría
     async function loadCategories() {
         try {
@@ -125,6 +192,9 @@ document.addEventListener("DOMContentLoaded", async function () {
                         loadProductsByCategory(category.name, instrumentsContainer);
                     }
                 });
+
+                // Cargar productos destacados
+                loadFeaturedProducts();
             } else {
                 console.error("Error al cargar categorías:", response.statusText);
             }

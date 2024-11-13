@@ -1,0 +1,223 @@
+/* myPublications.css */
+
+/* GLOBAL ------------------------------------------------------------------- */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #000000;
+    padding-top: 80px; /* Ajusta este valor según la altura de tu navbar */
+}
+
+/* SECCIÓN DE PUBLICACIONES --------------------------------------------------- */
+.publications-section {
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.publications-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: #333;
+}
+
+/* Tabla de Publicaciones */
+#publications table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fafafa;
+}
+
+#publications th, #publications td {
+    padding: 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+#publications th {
+    background-color: #3483fa; /* Tono azul */
+    color: white;
+}
+
+#publications tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#publications tr:hover {
+    background-color: #e0e0e0;
+}
+
+#publications .actions button {
+    padding: 8px 16px;
+    margin-right: 5px;
+    border: none;
+    background-color: #3483fa; /* Tono azul */
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+#publications .actions button:hover {
+    background-color: #2968c8;
+}
+
+/* Estilos para las fotos de las publicaciones */
+.publication-photo {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+/* Mensajes de Carga y Error */
+.error {
+    color: red;
+    text-align: center;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.loading {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+/* Modal --------------------------------------------------------------------- */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed; /* Fijo en la pantalla */
+    z-index: 2000; /* Asegúrate de que esté por encima del navbar */
+    left: 0;
+    top: 0;
+    width: 100%; /* Ancho completo */
+    height: 100%; /* Altura completa */
+    overflow: auto; /* Habilita el scroll si es necesario */
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    animation: fadeIn 0.5s;
+}
+
+/* Animación de Fade In */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto; /* 5% desde arriba y centrado */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 10px;
+    position: relative;
+    animation: slideIn 0.5s;
+}
+
+/* Animación de Slide In */
+@keyframes slideIn {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #000;
+}
+
+/* Formulario de Edición */
+#editPublicationForm {
+    display: flex;
+    flex-direction: column;
+}
+
+#editPublicationForm label {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#editPublicationForm input[type="text"],
+#editPublicationForm textarea,
+#editPublicationForm input[type="number"],
+#editPublicationForm select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#editPublicationForm textarea {
+    resize: vertical;
+    height: 80px;
+}
+
+#editPublicationForm button {
+    margin-top: 20px;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: #3483fa; /* Tono azul */
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#editPublicationForm button:hover {
+    background-color: #2968c8;
+}
+
+/* Previsualización de Fotos en el Modal */
+.photo-preview {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.photo-preview img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+/* Footer -------------------------------------------------------------------- */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}

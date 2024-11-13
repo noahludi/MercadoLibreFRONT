@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         </div>
         <div class="nav-links">
             <a href="index.html"><span class="material-symbols-outlined">home</span></a>
-            <a href="userFavourites.html"><span class="material-symbols-outlined">favorite</span></a>
+            <a href="myFavourites.html"><span class="material-symbols-outlined">favorite</span></a>
             <a href="cart.html"><span class="material-symbols-outlined">shopping_cart</span></a>
             <a href="sellProducts.html"><span class="material-symbols-outlined">sell</span></a>
             <div class="dropdown">
