@@ -130,28 +130,29 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     // Cargar productos de una categoría específica
     async function loadProductsByCategory(categoryName, container) {
-        const token = getToken(); // Obtener el token utilizando la función existente
-        if (!token) {
-            console.error("Token de autenticación no encontrado.");
-            return;
+        // Elimina la dependencia del token
+        const headers = {};
+        const token = getToken();
+        if (token) {
+            headers["Authorization"] = `Bearer ${token}`;
         }
-
+    
         try {
             const response = await fetch(`${apiUrl}/publications/by-category?categoryName=${encodeURIComponent(categoryName)}`, {
-                headers: { "Authorization": `Bearer ${token}` }
+                headers: headers
             });
-
+    
             if (response.ok) {
                 const products = await response.json();
-
+    
                 // Limpiar el contenedor antes de agregar nuevos productos
                 container.innerHTML = '';
-
+    
                 products.forEach(product => {
                     const productElement = createProductElement(product);
                     container.appendChild(productElement);
                 });
-
+    
                 // Almacenar los productos según la categoría
                 const categoryNameLower = categoryName.toLowerCase();
                 if (["tecnología", "tecnologia", "electrónica", "electronica"].includes(categoryNameLower)) {
@@ -163,7 +164,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 if (categoryNameLower === "instrumentos") {
                     instrumentsProducts = products;
                 }
-
+    
             } else {
                 const errorData = await response.json();
                 console.error("Error al cargar productos de categoría:", errorData.message || response.statusText);
@@ -172,6 +173,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             console.error("Error de conexión al cargar productos de categoría:", error);
         }
     }
+    
 
     // Función para seleccionar aleatoriamente productos para el carrusel
     function selectRandomProducts() {
@@ -243,24 +245,24 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     // Obtener categorías y cargar productos por categoría
     async function loadCategories() {
-        const token = getToken(); // Obtener el token utilizando la función existente
-        if (!token) {
-            console.error("Token de autenticación no encontrado.");
-            return;
+        const headers = {};
+        const token = getToken();
+        if (token) {
+            headers["Authorization"] = `Bearer ${token}`;
         }
-
+    
         try {
             const response = await fetch(`${apiUrl}/categories`, {
-                headers: { "Authorization": `Bearer ${token}` }
+                headers: headers
             });
-
+    
             if (response.ok) {
                 const categories = await response.json();
-
-                // Cargar productos para las categorías de Electrónica, Moda e Instrumentos
+    
+                // Cargar productos para las categorías
                 const loadCategoryPromises = categories.map(async category => {
                     const categoryNameLower = category.name.toLowerCase();
-
+    
                     if (["tecnología", "tecnologia", "electrónica", "electronica"].includes(categoryNameLower)) {
                         await loadProductsByCategory(category.name, electronicsContainer);
                     }
@@ -271,9 +273,9 @@ document.addEventListener("DOMContentLoaded", async function () {
                         await loadProductsByCategory(category.name, instrumentsContainer);
                     }
                 });
-
+    
                 await Promise.all(loadCategoryPromises);
-
+    
                 // Después de cargar todas las categorías, cargar el carrusel
                 loadCarouselProducts();
             } else {
@@ -283,7 +285,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         } catch (error) {
             console.error("Error de conexión al cargar categorías:", error);
         }
-    }
+    }    
 
     // Llamada a las funciones para cargar categorías y productos del carrusel
     await loadCategories();
