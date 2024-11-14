@@ -6,11 +6,13 @@ document.addEventListener("DOMContentLoaded", async function () {
     const electronicsContainer = document.querySelector(".electronics-list");
     const fashionContainer = document.querySelector(".fashion-list");
     const instrumentsContainer = document.querySelector(".instruments-list");
+    const vehiclesContainer = document.querySelector(".vehicles-list"); // Nuevo contenedor para Vehículos
 
     // Almacenar productos de cada categoría
     let electronicsProducts = [];
     let fashionProducts = [];
     let instrumentsProducts = [];
+    let vehicleProducts = []; // Nuevo array para Vehículos
 
     // Función para obtener el token JWT desde localStorage
     function getToken() {
@@ -104,7 +106,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
 
         try {
-            const response = await fetch(`${apiUrl}/wished-articles`, { // Usar la variable apiUrl
+            const response = await fetch(`${apiUrl}/wished-articles`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -130,29 +132,28 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     // Cargar productos de una categoría específica
     async function loadProductsByCategory(categoryName, container) {
-        // Elimina la dependencia del token
         const headers = {};
         const token = getToken();
         if (token) {
             headers["Authorization"] = `Bearer ${token}`;
         }
-    
+
         try {
             const response = await fetch(`${apiUrl}/publications/by-category?categoryName=${encodeURIComponent(categoryName)}`, {
                 headers: headers
             });
-    
+
             if (response.ok) {
                 const products = await response.json();
-    
+
                 // Limpiar el contenedor antes de agregar nuevos productos
                 container.innerHTML = '';
-    
+
                 products.forEach(product => {
                     const productElement = createProductElement(product);
                     container.appendChild(productElement);
                 });
-    
+
                 // Almacenar los productos según la categoría
                 const categoryNameLower = categoryName.toLowerCase();
                 if (["tecnología", "tecnologia", "electrónica", "electronica"].includes(categoryNameLower)) {
@@ -164,7 +165,10 @@ document.addEventListener("DOMContentLoaded", async function () {
                 if (categoryNameLower === "instrumentos") {
                     instrumentsProducts = products;
                 }
-    
+                if (["vehículos", "vehiculos", "automotriz"].includes(categoryNameLower)) {
+                    vehicleProducts = products;
+                }
+
             } else {
                 const errorData = await response.json();
                 console.error("Error al cargar productos de categoría:", errorData.message || response.statusText);
@@ -173,7 +177,6 @@ document.addEventListener("DOMContentLoaded", async function () {
             console.error("Error de conexión al cargar productos de categoría:", error);
         }
     }
-    
 
     // Función para seleccionar aleatoriamente productos para el carrusel
     function selectRandomProducts() {
@@ -194,6 +197,9 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
         if (instrumentsProducts.length > 0) {
             selectedProducts.push(...getRandomProductsFromList(instrumentsProducts, 2));
+        }
+        if (vehicleProducts.length > 0) {
+            selectedProducts.push(...getRandomProductsFromList(vehicleProducts, 2));
         }
 
         return selectedProducts;
@@ -250,19 +256,19 @@ document.addEventListener("DOMContentLoaded", async function () {
         if (token) {
             headers["Authorization"] = `Bearer ${token}`;
         }
-    
+
         try {
             const response = await fetch(`${apiUrl}/categories`, {
                 headers: headers
             });
-    
+
             if (response.ok) {
                 const categories = await response.json();
-    
+
                 // Cargar productos para las categorías
                 const loadCategoryPromises = categories.map(async category => {
                     const categoryNameLower = category.name.toLowerCase();
-    
+
                     if (["tecnología", "tecnologia", "electrónica", "electronica"].includes(categoryNameLower)) {
                         await loadProductsByCategory(category.name, electronicsContainer);
                     }
@@ -272,10 +278,13 @@ document.addEventListener("DOMContentLoaded", async function () {
                     if (categoryNameLower === "instrumentos") {
                         await loadProductsByCategory(category.name, instrumentsContainer);
                     }
+                    if (["vehículos", "vehiculos", "automotriz"].includes(categoryNameLower)) {
+                        await loadProductsByCategory(category.name, vehiclesContainer);
+                    }
                 });
-    
+
                 await Promise.all(loadCategoryPromises);
-    
+
                 // Después de cargar todas las categorías, cargar el carrusel
                 loadCarouselProducts();
             } else {
@@ -285,12 +294,12 @@ document.addEventListener("DOMContentLoaded", async function () {
         } catch (error) {
             console.error("Error de conexión al cargar categorías:", error);
         }
-    }    
+    }
 
     // Llamada a las funciones para cargar categorías y productos del carrusel
     await loadCategories();
 
-    // Carrusel de publicidad (mantiene tu código existente)
+    // Carrusel de publicidad
     let currentAdIndex = 0;
     const adList = document.querySelector('.ad-images');
     const ads = document.querySelectorAll('.ad-images img');
